@@ -1,8 +1,4 @@
-// this.test = window.addEventListener("load", function (event) {
 
-///////////////////
-//// FUNCTIONS ////
-///////////////////
 
 var mario = document.querySelector(".mario");
 var goompa = document.querySelector(".goompa");
@@ -16,32 +12,24 @@ var falling = false;
 var posXe = 0;
 var posYe = 0;
 var eTop = 0;
-var posXe2 = parseInt(goompa2.style.left);
-var posYe2 = parseInt(goompa2.style.bottom);
+var posXe2 = parseInt(getComputedStyle(goompa2).left);
+var posYe2 = parseInt(getComputedStyle(goompa2).bottom);
 var eTop2 = 0;
 
-function keyDownUp(event) {
-    // console.log(event.type) //keydown - keyup
-    // keyState[event.keyCode || event.which] = true;
-    controller.keyDownUp(event.type, event.keyCode);
 
+function keyDownUp(event) {
+    controller.keyDownUp(event.type, event.keyCode);
 };
 
 function update() {
 
     if (controller.left.active) {
-        // game.world.player.moveLeft();
         moveLeft();
-        // mario.style.left +=10;
-
     }
     if (controller.right.active) {
-        // game.world.player.moveRight();
         moveRight();
     }
     if (controller.up.active) {
-        // game.world.player.jump();
-        // controller.up.active = false;
         jump();
     }
 
@@ -81,7 +69,6 @@ function moveLeft() {
 }
 
 function jump() {
-    // speedY = 150;
     if (!jumping){
         console.log("jump() called")
         jumping = true;
@@ -91,8 +78,4 @@ function jump() {
         document.querySelector(".sounds").play();
     }
 
-    // if (!this.jumping) {
-    //     this.jumping = true;
-    //     speedY = 20;
-    // }
 }

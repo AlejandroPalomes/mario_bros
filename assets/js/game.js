@@ -15,10 +15,9 @@ function Game() {
         background_color: "rgba(40,48,56,1)",
 
         friction: 0.8,
-        //gravity: 5,
         gravity: 8,
 
-        player: new Game.Player(), //create instance player inside de object world
+        //player: new Game.Player(), //create instance player inside de object world
 
         //height: 72, //world height
         //width: 128, //world width
@@ -43,13 +42,13 @@ function Game() {
                 posY = eTop;
                 speedY = 0;
                 mario.src = "assets/img/mario-stand-01.png"
-                jumping = false;
+                // jumping = false;
                 falling = false;
-            }else if(posY > 0 && posY <= eTop2 && posX < posXe2+goompa2.width && posX+mario.width > posXe2){
+            }else if(posY > posYe2 && posY <= eTop2 && posX < posXe2+goompa2.width && posX+mario.width > posXe2){
                 posY = eTop2;
                 speedY = 0;
                 mario.src = "assets/img/mario-stand-01.png"
-                jumping = false;
+                // jumping = false;
                 falling = false;
             }
             // else if (object.y + object.height > this.height) {
@@ -59,17 +58,22 @@ function Game() {
                 // object.velocity_y = 0;
             // }
 
+
+
         },
 
         update: function () {
-            
+
 
 
             if(previousY > posY){
                 falling = true;
             }else if (previousY < posY){
                 falling = false;
+            }else if(previousY == posY){
+                jumping = false;
             }
+
             previousY = posY;
 
             speedY -= this.gravity;
@@ -86,7 +90,7 @@ function Game() {
             eTop = posYe + goompa.clientHeight;
             eTop2 = posYe2 + parseInt(goompa2.height);
 
-            console.log(eTop2)
+            console.log(posYe2);
 
 
             // this.player.velocity_y += this.gravity;
@@ -114,7 +118,7 @@ function Game() {
 Game.prototype = {
     constructor: Game
 };
-
+/*
 Game.Player = function (x, y) {
 
      //mine
@@ -166,4 +170,4 @@ Game.Player.prototype = {
 
     }
 
-};
+};*/

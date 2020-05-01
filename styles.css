@@ -3,8 +3,12 @@
     padding: 0;
 }
 
+body{
+    background: rgb(144, 150, 200);
+}
+
 #main-container{
-    height: 500px;
+    height: 700px;
     width: 1040px;
     position: relative;
     border: 10px solid rgb(214, 42, 22);
