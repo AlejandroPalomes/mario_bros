@@ -3,8 +3,19 @@
     padding: 0;
 }
 
+.d-flex{
+    display: flex;
+}
+
+.absolute{
+    position: absolute;
+}
+
 body{
     background: rgb(144, 150, 200);
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
 }
 
 #main-container{
@@ -19,11 +30,9 @@ body{
     bottom: 0px;
 }
 .goompa{
-    position: absolute;
     bottom: 0;
 }
 .goompa2{
-    position: absolute;
     bottom: 100px;
     left: 180px;
 }

@@ -51,12 +51,44 @@ function Game() {
                 // jumping = false;
                 falling = false;
             }
+
+            solidBlocks.forEach(element => {
+
+                posXe = parseInt(element.style.left);
+                posYe = parseInt(element.style.bottom);
+                eTop = posYe + element.height;
+
+                if(posY > posYe && posY <= eTop && posX < posXe+element.width && posX+mario.width > posXe){
+                    posY = eTop;
+                    speedY = 0;
+                    mario.src = "assets/img/mario-stand-01.png"
+                    // jumping = false;
+                    falling = false;
+                }else if (posY + mario.height > posYe && posY < eTop && posX < posXe+element.width && posX+mario.width > posXe) {
+                        // object.jumping = false;
+                        // object.y = this.height - object.height;
+                        console.log("border-top")
+                        posY = posYe - mario.height;
+                        speedY = 0;
+                    }
+            });
             // else if (object.y + object.height > this.height) {
             //     jumping = false;
                 // object.jumping = false;
                 // object.y = this.height - object.height;
                 // object.velocity_y = 0;
             // }
+
+            coins.forEach(element => {
+
+                posXe = parseInt(element.style.left);
+                posYe = parseInt(element.style.bottom);
+                eTop = posYe + element.height;
+
+                if(posY > posYe && posY <= eTop && posX < posXe+element.width && posX+mario.width > posXe){
+                    element.style.bottom = -200 + "px";
+                }
+            });
 
 
 
