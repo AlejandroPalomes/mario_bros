@@ -8,8 +8,8 @@ body{
 }
 
 #main-container{
-    height: 700px;
-    width: 1040px;
+    height: 600px;
+    width: 800px;
     position: relative;
     border: 10px solid rgb(214, 42, 22);
 }

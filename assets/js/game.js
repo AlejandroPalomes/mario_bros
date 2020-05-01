@@ -27,8 +27,8 @@ function Game() {
             if (posX < 0) {
                 posX = 0;
                 speedX = 0;
-            } else if (posX + mario.width > 1000) {
-                posX = 1000-mario.width;
+            } else if (posX + mario.width > screenX) {
+                posX = screenX-mario.width;
                 speedX = 0;
             }
 

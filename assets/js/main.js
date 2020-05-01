@@ -3,6 +3,8 @@
 var mario = document.querySelector(".mario");
 var goompa = document.querySelector(".goompa");
 var goompa2 = document.querySelector(".goompa2");
+var screen = document.querySelector("#main-container");
+var screenX = parseInt(getComputedStyle(screen).width);
 var speedX = 0;
 var speedY = 0;
 var posX = 0;
@@ -15,7 +17,6 @@ var eTop = 0;
 var posXe2 = parseInt(getComputedStyle(goompa2).left);
 var posYe2 = parseInt(getComputedStyle(goompa2).bottom);
 var eTop2 = 0;
-
 
 function keyDownUp(event) {
     controller.keyDownUp(event.type, event.keyCode);
