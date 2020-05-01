@@ -1,6 +1,7 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Press Start 2P', cursive;
 }
 
 .d-flex{
@@ -18,6 +19,24 @@ body{
     align-items: center;
 }
 
+.stats{
+    width: 740px;
+    font-size: 20px;
+    color: white;
+    margin: 35px auto;
+    justify-content: space-between;
+}
+
+.stats__box{
+    flex-direction: column;
+}
+.stats__box:nth-child(3){
+    align-items: center;
+}
+.stats__box:last-child{
+    align-items: flex-end;
+}
+
 #main-container{
     height: 600px;
     width: 800px;
@@ -26,6 +45,8 @@ body{
 }
 
 .mario{
+    margin-bottom: 8px;
+    margin-top: 20px;
     position: absolute;
     bottom: 0px;
 }
@@ -33,7 +54,7 @@ body{
     bottom: 0;
 }
 .goompa2{
-    bottom: 100px;
+    bottom: 0px;
     left: 180px;
 }
 

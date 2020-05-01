@@ -1,6 +1,3 @@
-/* The Game class has been updated with a new Player class and given a new world
-object that controls the virtual game world. Players, NPCs, world dimensions, collision
-maps, and everything to do with the game world are stored in the world object. */
 
 function World(){
     
@@ -16,11 +13,6 @@ function Game() {
 
         friction: 0.8,
         gravity: 8,
-
-        //player: new Game.Player(), //create instance player inside de object world
-
-        //height: 72, //world height
-        //width: 128, //world width
 
         collideObject: function () {
 
@@ -49,26 +41,30 @@ function Game() {
                 speedY = 0;
                 mario.src = "assets/img/mario-stand-01.png"
                 // jumping = false;
+                if(falling){
+                    posXe2 *= -20;
+                    goompa2.style.bottom = posXe2 + "px";
+                }
                 falling = false;
             }
 
             solidBlocks.forEach(element => {
 
-                posXe = parseInt(element.style.left);
-                posYe = parseInt(element.style.bottom);
-                eTop = posYe + element.height;
+                var posXB = parseInt(element.style.left);
+                var posYB = parseInt(element.style.bottom);
+                var eTopB = posYB + element.height;
 
-                if(posY > posYe && posY <= eTop && posX < posXe+element.width && posX+mario.width > posXe){
-                    posY = eTop;
+                if(posY > posYB && posY <= eTopB && posX < posXB+element.width && posX+mario.width > posXB){
+                    posY = eTopB;
                     speedY = 0;
                     mario.src = "assets/img/mario-stand-01.png"
                     // jumping = false;
                     falling = false;
-                }else if (posY + mario.height > posYe && posY < eTop && posX < posXe+element.width && posX+mario.width > posXe) {
+                }else if (posY + mario.height > posYB && posY < eTopB && posX < posXB+element.width && posX+mario.width > posXB) {
                         // object.jumping = false;
                         // object.y = this.height - object.height;
                         console.log("border-top")
-                        posY = posYe - mario.height;
+                        posY = posYB - mario.height;
                         speedY = 0;
                     }
             });
@@ -81,12 +77,15 @@ function Game() {
 
             coins.forEach(element => {
 
-                posXe = parseInt(element.style.left);
-                posYe = parseInt(element.style.bottom);
-                eTop = posYe + element.height;
+                var posXC = parseInt(element.style.left);
+                var posYC = parseInt(element.style.bottom);
+                var eTopC = posYC + element.height;
 
-                if(posY > posYe && posY <= eTop && posX < posXe+element.width && posX+mario.width > posXe){
+                if(posY > posYC-11 && posY <= eTopC && posX < posXC+element.width && posX+mario.width > posXC){
                     element.style.bottom = -200 + "px";
+                    document.querySelector(".coinSound").currentTime = 0;
+                    document.querySelector(".coinSound").play();
+                    coinCount++
                 }
             });
 
