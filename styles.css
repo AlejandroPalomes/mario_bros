@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+#main-container{
+    height: 500px;
+    width: 1040px;
+    position: relative;
+    border: 10px solid rgb(214, 42, 22);
+}
+
+.mario{
+    position: absolute;
+    bottom: 0px;
+}
+.goompa{
+    position: absolute;
+    bottom: 0;
+}
+.goompa2{
+    position: absolute;
+    bottom: 100px;
+    left: 180px;
+}
+
+.jump-image{
+    background-image: url(assets/img/mario-jump-01.png);
+    transition: none;
+}
+.jump{
+    /* transform: translateY(-100px); */
+    bottom: 150px;
+    transition: bottom 0.5s ease;
+}
+
+.right{
+    transform: translateX(10px);
+}
+
+.dead{
+    background-image: url(assets/img/goompa3.png);
+    background-size: cover;
+}
+
+.walk{
+    background-image: url(assets/img/goompa2.png);
+}
