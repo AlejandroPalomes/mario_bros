@@ -39,15 +39,18 @@ function Game() {
                 falling = false;
             }
 
+
+            
             goompa.forEach(function (element) {
                 var posXG = parseInt(element.style.left);
                 var posYG = parseInt(element.style.bottom);
                 var eTopG = posYG + element.height;
 
-                if (posY > posYG - 11 && posY <= eTopG && posX < posXG + element.width && posX + mario.width > posXG) {
+                if (posY > posYG - 11 && posY <= eTopG && posX < posXG + element.width && posX + mario.width > posXG && element.classList.contains("alive")) {
                     console.log("collision")
                     if (!falling) {
                         console.log("dead")
+                        dead()
                         mario.src = "assets/img/mario-out.png"
                     }
                     posY = eTopG;
@@ -60,6 +63,7 @@ function Game() {
                         document.querySelector(".kill").play();
                         score += 10;
                         document.querySelector("#score").innerHTML = ('00000' + score).slice(-6);
+                        element.classList.remove("alive");
                         var removeEnemy = setTimeout(function () {
                             element.style.bottom = "-150px";
                             element.classList.add("hidden");
