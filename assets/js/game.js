@@ -21,7 +21,6 @@ function Game() {
 
             borderLeft++;
             screenX++;
-            console.log(screenX - (screenXInitial - 800))
 
             if (posX < borderLeft) {
                 posX = borderLeft;
@@ -48,7 +47,6 @@ function Game() {
                 var eTopG = posYG + element.height;
 
                 if (posY > posYG - 11 && posY <= eTopG && posX < posXG + element.width && posX + mario.width > posXG && element.classList.contains("alive")) {
-                    console.log("collision")
                     if (!falling) {
                         console.log("dead")
                         dead()
@@ -119,11 +117,9 @@ function Game() {
                             // alert("gameover")
                             dead();
                         }
-                        // console.log("entro por izquierda")
                         speedX = 0;
                         posX = posXB - mario.width;
                     } else if (posX > posXB + element.width / 2) {
-                        // console.log("entro por derecha")
                         speedX = 0;
                         posX = posXB + element.width;
                     }
@@ -173,61 +169,63 @@ function Game() {
             mario.style.left = posX + "px";
             mario.style.bottom = posY + "px";
 
+            console.log(posX)
 
             //!goompa movement\\
             goompa.forEach(function (element) {
-                speed = -1;
-                posXG = parseInt(element.style.left);
 
-                //? AI in Goompa Collider
-                var leftTube = parseInt(element.previousElementSibling.style.left);
-                var leftTubeW = element.previousElementSibling.width;
-                var rightTube = parseInt(element.nextElementSibling.style.left);
-                var rightTubeW = element.nextElementSibling.width;
+                if(posX > parseInt(element.style.left)-900){
+                    console.log("inside the if")
+                    console.log(element.style.left)
 
-                if (element.previousElementSibling.classList.contains("tube")) {
-                    if (posXG < leftTube + leftTubeW) {
-                        element.classList.remove("moveLeft")
+                    speed = -1;
+                    posXG = parseInt(element.style.left);
+    
+                    //? AI in Goompa Collider
+                    var leftTube = parseInt(element.previousElementSibling.style.left);
+                    var leftTubeW = element.previousElementSibling.width;
+                    var rightTube = parseInt(element.nextElementSibling.style.left);
+                    var rightTubeW = element.nextElementSibling.width;
+    
+                    if (element.previousElementSibling.classList.contains("tube")) {
+                        if (posXG < leftTube + leftTubeW) {
+                            element.classList.remove("moveLeft")
+                        }
+    
+                        if (element.classList.contains("moveLeft")) {
+                            element.style.left = posXG + "px";
+                            posXG--;
+                        } else {
+                            posXG += 2;
+                            element.style.left = posXG + "px";
+                        }
                     }
-
-                    if (element.classList.contains("moveLeft")) {
-                        console.log("goompa moving left")
-                        element.style.left = posXG + "px";
-                        posXG--;
-                    } else {
-                        console.log("goompa moving right")
-                        posXG += 2;
-                        element.style.left = posXG + "px";
+    
+                    if (element.nextElementSibling.classList.contains("tube")) {
+                        if (posXG + element.width > rightTube) {
+                            element.classList.add("moveLeft")
+                        }
+    
+                        if (element.classList.contains("moveLeft")) {
+                            element.style.left = posXG + "px";
+                            posXG--;
+                        } else {
+                            posXG += 2;
+                            element.style.left = posXG + "px";
+                        }
+                    }else if(element.nextElementSibling.nextElementSibling.classList.contains("tube")){
+                        if (posXG + element.width > parseInt(element.nextElementSibling.nextElementSibling.style.left)) {
+                            element.classList.add("remove")
+                        }
                     }
+    
+                    posXG += speed;
+                    element.style.left = posXG + "px";
                 }
-
-                if (element.nextElementSibling.classList.contains("tube")) {
-                    if (posXG + element.width > rightTube) {
-                        element.classList.add("moveLeft")
-                    }
-
-                    if (element.classList.contains("moveLeft")) {
-                        console.log("goompa moving left")
-                        element.style.left = posXG + "px";
-                        posXG--;
-                    } else {
-                        console.log("goompa moving right")
-                        posXG += 2;
-                        element.style.left = posXG + "px";
-                    }
-                }else if(element.nextElementSibling.nextElementSibling.classList.contains("tube")){
-                    if (posXG + element.width > parseInt(element.nextElementSibling.nextElementSibling.style.left)) {
-                        element.classList.add("remove")
-                    }
-                }
-
-                posXG += speed;
-                element.style.left = posXG + "px";
             })
 
             //screenX += worldSpeed;
 
-            //console.log((screenX++)-(screenX-800), posX)
 
             worldMove -= worldSpeed;
             document.querySelector("#main-container").style.left = worldMove + "px";
