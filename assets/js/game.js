@@ -36,14 +36,21 @@ function Game() {
                 mario.src = "assets/img/mario-stand-01.png"
                 // jumping = false;
                 falling = false;
-            }else if(posY > posYe2 && posY <= eTop2 && posX < posXe2+goompa2.width && posX+mario.width > posXe2){
+            }else if(posY > posYe2-11 && posY <= eTop2 && posX < posXe2+goompa2.width && posX+mario.width > posXe2){
+                console.log("collision")
+                if (posY == -8){
+                    console.log("dead")
+                    mario.src = "assets/img/mario-out.jpg"
+                }
                 posY = eTop2;
                 speedY = 0;
-                mario.src = "assets/img/mario-stand-01.png"
-                // jumping = false;
                 if(falling){
-                    posXe2 *= -20;
-                    goompa2.style.bottom = posXe2 + "px";
+                    posYe2 = -100
+                    speedY = 80;
+                    goompa2.src = "assets/img/goompa3.png"
+                    document.querySelector(".kill").play();
+                    var removeEnemy = setTimeout(function(){
+                        goompa2.style.bottom = "-150px";}, 1000);
                 }
                 falling = false;
             }
