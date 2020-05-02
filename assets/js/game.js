@@ -37,36 +37,70 @@ function Game() {
                 mario.src = "assets/img/mario-stand-01.png"
                 jumping = false;
                 falling = false;
-            } else if (posY > 0 && posY <= eTop && posX < posXe + goompa.width && posX + mario.width > posXe) {
-                posY = eTop;
-                speedY = 0;
-                mario.src = "assets/img/mario-stand-01.png"
-                // jumping = false;
-                falling = false;
-            } else if (posY > posYe2 - 11 && posY <= eTop2 && posX < posXe2 + goompa2.width && posX + mario.width > posXe2) {
-                console.log("collision")
-                if (posY == -8) {
-                    console.log("dead")
-                    mario.src = "assets/img/mario-out.jpg"
-                }
-                posY = eTop2;
-                speedY = 0;
-                if (falling) {
-                    posYe2 = -100
-                    speedY = 80;
-                    goompa2.src = "assets/img/goompa3.png"
-                    document.querySelector(".kill").play();
-                    score += 10;
-                    document.querySelector("#score").innerHTML = ('00000' + score).slice(-6);
-                    var removeEnemy = setTimeout(function () {
-                        // goompa2.style.bottom = "-150px";
-                        goompa2.classList.add("hidden");
-                    }, 1000);
-                }
-                falling = false;
-            }
+            } 
+            // else if (posY > 0 && posY <= eTop && posX < posXe + goompa.width && posX + mario.width > posXe) {
+            //     posY = eTop;
+            //     speedY = 0;
+            //     mario.src = "assets/img/mario-stand-01.png"
+            //     // jumping = false;
+            //     falling = false;
+            // } 
+            // else if (posY > posYe2 - 11 && posY <= eTop2 && posX < posXe2 + goompa2.width && posX + mario.width > posXe2) {
+            //     console.log("collision")
+            //     if (posY == -8) {
+            //         console.log("dead")
+            //         mario.src = "assets/img/mario-out.jpg"
+            //     }
+            //     posY = eTop2;
+            //     speedY = 0;
+            //     if (falling) {
+            //         posYe2 = -100
+            //         speedY = 80;
+            //         goompa2.src = "assets/img/goompa3.png"
+            //         document.querySelector(".kill").play();
+            //         score += 10;
+            //         document.querySelector("#score").innerHTML = ('00000' + score).slice(-6);
+            //         var removeEnemy = setTimeout(function () {
+            //             // goompa2.style.bottom = "-150px";
+            //             goompa2.classList.add("hidden");
+            //         }, 1000);
+            //     }
+            //     falling = false;
+            // }
+            var index = 0;
+            goompa.forEach(function(element){
+                var posXG = parseInt(element.style.left);
+                var posYG = parseInt(element.style.bottom);
+                var posYG = goompaY[index];
+                index++;
+                var eTopG = posYG + element.height;
 
-            solidBlocks.forEach(element => {
+                if (posY > posYG - 11 && posY <= eTopG && posX < posXG + element.width && posX + mario.width > posXG) {
+                    console.log("collision")
+                    if (!falling) {
+                        console.log("dead")
+                        mario.src = "assets/img/mario-out.png"
+                    }
+                    posY = eTopG;
+                    speedY = 0;
+                    if (falling) {
+                        //alive = false;
+                        posYG = -100;
+                        speedY = 80;
+                        element.src = "assets/img/goompa3.png"
+                        document.querySelector(".kill").play();
+                        score += 10;
+                        document.querySelector("#score").innerHTML = ('00000' + score).slice(-6);
+                        var removeEnemy = setTimeout(function () {
+                            element.style.bottom = "-150px";
+                            element.classList.add("hidden");
+                        }, 1000);
+                    }
+                    falling = false;
+                }
+            });
+
+            solidBlocks.forEach(function(element) {
 
                 var posXB = parseInt(element.style.left);
                 var posYB = parseInt(element.style.bottom);
@@ -82,7 +116,6 @@ function Game() {
                     }
 
                     if (!onTop) {
-                        // console.log("border-top")
                         posY = posYB - mario.height;
                         speedY = 0;
                     }
@@ -161,13 +194,19 @@ function Game() {
             mario.style.left = posX + "px";
             mario.style.bottom = posY + "px";
 
-            eTop = posYe + goompa.clientHeight;
-            eTop2 = posYe2 + parseInt(goompa2.height);
+            // eTop = posYe + goompa.clientHeight;
+            //eTop2 = posYe2 + parseInt(goompa2.height);
+
+            goompa.forEach(function(element){
+                posXG = parseInt(element.style.left);
+                posXG--;
+                element.style.left = posXG + "px";
+            })
 
             //console.log(posYe2);
 
-            posXe2 -= 4;
-            goompa2.style.left = posXe2 + "px";
+            // posXe2 -= 4;
+            // goompa2.style.left = posXe2 + "px";
 
             worldMove -= 1;
             document.querySelector("#main-container").style.left = worldMove + "px";

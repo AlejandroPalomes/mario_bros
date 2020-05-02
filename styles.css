@@ -74,13 +74,13 @@ body{
     position: absolute;
     bottom: 0px;
 }
-.goompa{
+/* .goompa{
     bottom: 0;
 }
 .goompa2{
     bottom: 0px;
     left: 500px;
-}
+} */
 
 .jump-image{
     background-image: url(assets/img/mario-jump-01.png);

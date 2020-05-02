@@ -1,6 +1,6 @@
 var mario = document.querySelector(".mario");
-var goompa = document.querySelector(".goompa");
-var goompa2 = document.querySelector(".goompa2");
+var goompa = document.querySelectorAll(".goompa");
+// var goompa2 = document.querySelector(".goompa2");
 var screen = document.querySelector("#main-container");
 var screenX = parseInt(getComputedStyle(screen).width);
 var speedX = 0;
@@ -12,14 +12,20 @@ var falling = false;
 var posXe = 0;
 var posYe = 0;
 var eTop = 0;
-var posXe2 = parseInt(getComputedStyle(goompa2).left);
-var posYe2 = parseInt(getComputedStyle(goompa2).bottom);
+// var posXe2 = parseInt(getComputedStyle(goompa2).left);
+// var posYe2 = parseInt(getComputedStyle(goompa2).bottom);
 var eTop2 = 0;
 var coinCount = 0;
 var score = 0;
 var time = 400;
 
 var alive = true;
+
+var goompaY = [];
+
+goompa.forEach(function(element){
+    goompaY.push(parseInt(element.style.bottom));
+})
 
 
 var solidBlocks = document.querySelectorAll(".collider");
