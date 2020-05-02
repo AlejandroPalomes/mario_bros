@@ -215,6 +215,10 @@ function Game() {
                         posXG += 2;
                         element.style.left = posXG + "px";
                     }
+                }else if(element.nextElementSibling.nextElementSibling.classList.contains("tube")){
+                    if (posXG + element.width > parseInt(element.nextElementSibling.nextElementSibling.style.left)) {
+                        element.classList.add("remove")
+                    }
                 }
 
                 posXG += speed;
