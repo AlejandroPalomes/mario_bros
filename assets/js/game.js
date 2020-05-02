@@ -11,8 +11,9 @@ function Game() {
 
         background_color: "rgba(40,48,56,1)",
 
-        friction: 0.8,
+        friction: 0.6,
         gravity: 8,
+        gravityFriction: 0.8,
 
         collideObject: function () {
 
@@ -62,17 +63,24 @@ function Game() {
                 var eTopB = posYB + element.height;
 
                 if(posY > posYB && posY <= eTopB && posX < posXB+element.width && posX+mario.width > posXB){
-                    posY = eTopB;
-                    speedY = 0;
-                    mario.src = "assets/img/mario-stand-01.png"
-                    // jumping = false;
-                    falling = false;
-                }else if (posY + mario.height > posYB && posY < eTopB && posX < posXB+element.width && posX+mario.width > posXB) {
-                        // object.jumping = false;
-                        // object.y = this.height - object.height;
+                    var onTop = false;
+                    if(falling){
+                        posY = eTopB;
+                        speedY = 0;
+                        mario.src = "assets/img/mario-stand-01.png"
+                        // jumping = false;
+                        // falling = false;
+                        onTop = true;
+                    }
+                    if(!onTop){
                         console.log("border-top")
                         posY = posYB - mario.height;
                         speedY = 0;
+
+                        //}else if (posY + mario.height > posYB && posY < eTopB && posX < posXB+element.width && posX+mario.width > posXB) {
+                            // object.jumping = false;
+                            // object.y = this.height - object.height;
+                        }
                     }
             });
             // else if (object.y + object.height > this.height) {
@@ -93,6 +101,7 @@ function Game() {
                     document.querySelector(".coinSound").currentTime = 0;
                     document.querySelector(".coinSound").play();
                     coinCount++
+                    document.querySelector(".coinCounter").innerHTML = ('0' + coinCount).slice(-2);
                 }
             });
 
@@ -101,9 +110,6 @@ function Game() {
         },
 
         update: function () {
-
-
-
             if(previousY > posY){
                 falling = true;
             }else if (previousY < posY){
@@ -120,7 +126,7 @@ function Game() {
             posY += speedY;
             //!UPDATE
             speedX *= this.friction;
-            speedY *= this.friction;
+            speedY *= this.gravityFriction;
 
             mario.style.left = posX + "px";
             mario.style.bottom = posY + "px";

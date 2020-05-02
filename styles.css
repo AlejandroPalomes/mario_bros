@@ -30,6 +30,11 @@ body{
 .stats__box{
     flex-direction: column;
 }
+.stats__box:nth-child(2){
+    height: 40px;
+    justify-content: flex-end;
+    align-items: center;
+}
 .stats__box:nth-child(3){
     align-items: center;
 }
@@ -79,4 +84,8 @@ body{
 
 .walk{
     background-image: url(assets/img/goompa2.png);
+}
+
+.hidden{
+    display: none;
 }
