@@ -1,5 +1,4 @@
-
-function World(){
+function World() {
 
 }
 
@@ -7,28 +6,28 @@ function Game() {
     var screenDisplacement = 200;
     var previousY = Boolean;
     var worldMove = 200;
-    var borderLeft = 0-screenDisplacement;
-    var screenXInitial  = screenX;
-    
+    var borderLeft = 0 - screenDisplacement;
+    var screenXInitial = screenX;
+
     this.world = { //with this, we say that world is an object of Game
-        
+
         background_color: "rgba(40,48,56,1)",
-        
+
         friction: 0.7,
         gravity: 8,
         gravityFriction: 0.8,
-        
+
         collideObject: function () {
-            
+
             borderLeft++;
             screenX++;
-            console.log(screenX-(screenXInitial-800))
+            console.log(screenX - (screenXInitial - 800))
 
             if (posX < borderLeft) {
                 posX = borderLeft;
                 speedX = 0;
-            } else if (posX + mario.width > screenX-screenDisplacement-(screenXInitial-800)) {
-                posX = screenX-screenDisplacement-(screenXInitial-800)-mario.width;
+            } else if (posX + mario.width > screenX - screenDisplacement - (screenXInitial - 800)) {
+                posX = screenX - screenDisplacement - (screenXInitial - 800) - mario.width;
                 speedX = 0;
             }
 
@@ -38,28 +37,28 @@ function Game() {
                 mario.src = "assets/img/mario-stand-01.png"
                 jumping = false;
                 falling = false;
-            }else if(posY > 0 && posY <= eTop && posX < posXe+goompa.width && posX+mario.width > posXe){
+            } else if (posY > 0 && posY <= eTop && posX < posXe + goompa.width && posX + mario.width > posXe) {
                 posY = eTop;
                 speedY = 0;
                 mario.src = "assets/img/mario-stand-01.png"
                 // jumping = false;
                 falling = false;
-            }else if(posY > posYe2-11 && posY <= eTop2 && posX < posXe2+goompa2.width && posX+mario.width > posXe2){
+            } else if (posY > posYe2 - 11 && posY <= eTop2 && posX < posXe2 + goompa2.width && posX + mario.width > posXe2) {
                 console.log("collision")
-                if (posY == -8){
+                if (posY == -8) {
                     console.log("dead")
                     mario.src = "assets/img/mario-out.jpg"
                 }
                 posY = eTop2;
                 speedY = 0;
-                if(falling){
+                if (falling) {
                     posYe2 = -100
                     speedY = 80;
                     goompa2.src = "assets/img/goompa3.png"
                     document.querySelector(".kill").play();
-                    score +=10;
+                    score += 10;
                     document.querySelector("#score").innerHTML = ('00000' + score).slice(-6);
-                    var removeEnemy = setTimeout(function(){
+                    var removeEnemy = setTimeout(function () {
                         // goompa2.style.bottom = "-150px";
                         goompa2.classList.add("hidden");
                     }, 1000);
@@ -73,48 +72,48 @@ function Game() {
                 var posYB = parseInt(element.style.bottom);
                 var eTopB = posYB + element.height;
 
-                if(posY > posYB && posY <= eTopB && posX < posXB+element.width && posX+mario.width > posXB){
+                if (posY > posYB && posY <= eTopB && posX < posXB + element.width && posX + mario.width > posXB) {
                     var onTop = false;
-                    if(falling){
+                    if (falling) {
                         posY = eTopB;
                         speedY = 0;
                         mario.src = "assets/img/mario-stand-01.png"
                         onTop = true;
                     }
 
-                    if(!onTop){
+                    if (!onTop) {
                         // console.log("border-top")
                         posY = posYB - mario.height;
                         speedY = 0;
-                        }
+                    }
                 }
             });
-            
+
             tubes.forEach(element => {
 
                 var posXB = parseInt(element.style.left);
                 var posYB = parseInt(element.style.bottom);
                 var eTopB = posYB + element.height;
 
-                if(posY > posYB && posY <= eTopB && posX < posXB+element.width && posX+mario.width > posXB){
+                if (posY > posYB && posY <= eTopB && posX < posXB + element.width && posX + mario.width > posXB) {
                     var onTop = false;
-                    if(falling){
+                    if (falling) {
                         posY = eTopB;
                         speedY = 0;
                         mario.src = "assets/img/mario-stand-01.png"
                         onTop = true;
-                    }else if (posX+mario.width <= (posXB+element.width/2)){
-                        if( posY < 10 && speedX == 0){
+                    } else if (posX + mario.width <= (posXB + element.width / 2)) {
+                        if (posY < 10 && speedX == 0 && posX < borderLeft + 10) {
                             // alert("gameover")
                             dead();
                         }
                         // console.log("entro por izquierda")
-                        speedX=0;
-                        posX = posXB-mario.width;
-                    }else if (posX>posXB + element.width/2){
+                        speedX = 0;
+                        posX = posXB - mario.width;
+                    } else if (posX > posXB + element.width / 2) {
                         // console.log("entro por derecha")
                         speedX = 0;
-                        posX = posXB+element.width;
+                        posX = posXB + element.width;
                     }
                 }
             });
@@ -125,10 +124,11 @@ function Game() {
                 var posYC = parseInt(element.style.bottom);
                 var eTopC = posYC + element.height;
 
-                if(posY > posYC-11 && posY <= eTopC && posX < posXC+element.width && posX+mario.width > posXC){
+                if (posY > posYC - 11 && posY <= eTopC && posX < posXC + element.width && posX + mario.width > posXC) {
                     element.style.bottom = -200 + "px";
                     element.classList.add("hidden");
                     document.querySelector(".coinSound").currentTime = 0;
+                    document.querySelector(".coinSound").volume = 0.7;
                     document.querySelector(".coinSound").play();
                     coinCount++
                     document.querySelector(".coinCounter").innerHTML = ('0' + coinCount).slice(-2);
@@ -140,11 +140,11 @@ function Game() {
         },
 
         update: function () {
-            if(previousY > posY){
+            if (previousY > posY) {
                 falling = true;
-            }else if (previousY < posY){
+            } else if (previousY < posY) {
                 falling = false;
-            }else if(previousY == posY){
+            } else if (previousY == posY) {
                 jumping = false;
             }
 
@@ -188,15 +188,16 @@ function Game() {
 
 };
 
-function checkTime(){
-    if (time == 0){
+function checkTime() {
+    if (time == 0) {
         alert("GAME OVER");
     }
 }
 
-function dead(){
+function dead() {
     mario.src = "assets/img/mario-out.png"
     alive = false;
+    document.querySelector(".theme").pause();
 }
 
 Game.prototype = {

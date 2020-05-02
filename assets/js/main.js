@@ -1,5 +1,3 @@
-
-
 var mario = document.querySelector(".mario");
 var goompa = document.querySelector(".goompa");
 var goompa2 = document.querySelector(".goompa2");
@@ -56,10 +54,6 @@ function update() {
 };
 
 
-    
-
-
-
 /////////////////
 //// OBJECTS ////
 /////////////////
@@ -99,7 +93,9 @@ function jump() {
         mario.src = "assets/img/mario-jump-01.png"
         document.querySelector(".theme").play();
         document.querySelector(".sounds").currentTime = 0.5;
+        document.querySelector(".sounds").volume = 0.3;
         document.querySelector(".sounds").play();
+        document.querySelector(".theme").loop = true;
     }
 
 }
