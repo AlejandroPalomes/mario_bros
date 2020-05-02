@@ -104,10 +104,9 @@ function Game() {
                         mario.src = "assets/img/mario-stand-01.png"
                         onTop = true;
                     }else if (posX+mario.width <= (posXB+element.width/2)){
-                        if(!controller.right.active && posY < 10){
+                        if( posY < 10 && speedX == 0){
                             // alert("gameover")
-                            mario.src = "assets/img/mario-out.png"
-                            alive = false;
+                            dead();
                         }
                         // console.log("entro por izquierda")
                         speedX=0;
@@ -193,6 +192,11 @@ function checkTime(){
     if (time == 0){
         alert("GAME OVER");
     }
+}
+
+function dead(){
+    mario.src = "assets/img/mario-out.png"
+    alive = false;
 }
 
 Game.prototype = {
