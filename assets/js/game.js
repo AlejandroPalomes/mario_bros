@@ -40,7 +40,8 @@ function Game() {
             }
 
 
-            
+            //!GOOMPA PHYSICS\\
+
             goompa.forEach(function (element) {
                 var posXG = parseInt(element.style.left);
                 var posYG = parseInt(element.style.bottom);
@@ -72,6 +73,8 @@ function Game() {
                     falling = false;
                 }
             });
+
+            //!BLOCKS PHYSICS\\
 
             solidBlocks.forEach(function (element) {
 
@@ -167,10 +170,51 @@ function Game() {
             mario.style.left = posX + "px";
             mario.style.bottom = posY + "px";
 
-            //goompa movement\\
+
+            //!goompa movement\\
             goompa.forEach(function (element) {
+                speed = -1;
                 posXG = parseInt(element.style.left);
-                posXG--;
+                
+                //? AI in Goompa Collider
+                var leftTube = parseInt(element.previousElementSibling.style.left);
+                var leftTubeW = element.previousElementSibling.width;
+                var rightTube = parseInt(element.nextElementSibling.style.left);
+                var rightTubeW = element.nextElementSibling.width;
+
+                if(element.previousElementSibling.classList.contains("tube")){
+                    if(posXG < leftTube+leftTubeW){
+                        element.classList.remove("moveLeft")
+                    }
+
+                    if(element.classList.contains("moveLeft")){
+                        console.log("goompa moving left")
+                        element.style.left = posXG + "px";
+                        posXG--;
+                    }else{
+                        console.log("goompa moving right")
+                        posXG+=2;
+                        element.style.left = posXG + "px";
+                    }
+                }
+
+                if(element.nextElementSibling.classList.contains("tube")){
+                    if(posXG+element.width > rightTube){
+                        element.classList.add("moveLeft")
+                    }
+
+                    if(element.classList.contains("moveLeft")){
+                        console.log("goompa moving left")
+                        element.style.left = posXG + "px";
+                        posXG--;
+                    }else{
+                        console.log("goompa moving right")
+                        posXG+=2;
+                        element.style.left = posXG + "px";
+                    }
+                }
+
+                posXG += speed;
                 element.style.left = posXG + "px";
             })
 
