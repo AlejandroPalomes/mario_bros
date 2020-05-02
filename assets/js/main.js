@@ -21,12 +21,6 @@ var time = 400;
 
 var alive = true;
 
-var goompaY = [];
-
-goompa.forEach(function(element){
-    goompaY.push(parseInt(element.style.bottom));
-})
-
 
 var solidBlocks = document.querySelectorAll(".collider");
 var coins = document.querySelectorAll(".coin");

@@ -37,42 +37,11 @@ function Game() {
                 mario.src = "assets/img/mario-stand-01.png"
                 jumping = false;
                 falling = false;
-            } 
-            // else if (posY > 0 && posY <= eTop && posX < posXe + goompa.width && posX + mario.width > posXe) {
-            //     posY = eTop;
-            //     speedY = 0;
-            //     mario.src = "assets/img/mario-stand-01.png"
-            //     // jumping = false;
-            //     falling = false;
-            // } 
-            // else if (posY > posYe2 - 11 && posY <= eTop2 && posX < posXe2 + goompa2.width && posX + mario.width > posXe2) {
-            //     console.log("collision")
-            //     if (posY == -8) {
-            //         console.log("dead")
-            //         mario.src = "assets/img/mario-out.jpg"
-            //     }
-            //     posY = eTop2;
-            //     speedY = 0;
-            //     if (falling) {
-            //         posYe2 = -100
-            //         speedY = 80;
-            //         goompa2.src = "assets/img/goompa3.png"
-            //         document.querySelector(".kill").play();
-            //         score += 10;
-            //         document.querySelector("#score").innerHTML = ('00000' + score).slice(-6);
-            //         var removeEnemy = setTimeout(function () {
-            //             // goompa2.style.bottom = "-150px";
-            //             goompa2.classList.add("hidden");
-            //         }, 1000);
-            //     }
-            //     falling = false;
-            // }
-            var index = 0;
-            goompa.forEach(function(element){
+            }
+
+            goompa.forEach(function (element) {
                 var posXG = parseInt(element.style.left);
                 var posYG = parseInt(element.style.bottom);
-                var posYG = goompaY[index];
-                index++;
                 var eTopG = posYG + element.height;
 
                 if (posY > posYG - 11 && posY <= eTopG && posX < posXG + element.width && posX + mario.width > posXG) {
@@ -100,7 +69,7 @@ function Game() {
                 }
             });
 
-            solidBlocks.forEach(function(element) {
+            solidBlocks.forEach(function (element) {
 
                 var posXB = parseInt(element.style.left);
                 var posYB = parseInt(element.style.bottom);
@@ -194,19 +163,12 @@ function Game() {
             mario.style.left = posX + "px";
             mario.style.bottom = posY + "px";
 
-            // eTop = posYe + goompa.clientHeight;
-            //eTop2 = posYe2 + parseInt(goompa2.height);
-
-            goompa.forEach(function(element){
+            //goompa movement\\
+            goompa.forEach(function (element) {
                 posXG = parseInt(element.style.left);
                 posXG--;
                 element.style.left = posXG + "px";
             })
-
-            //console.log(posYe2);
-
-            // posXe2 -= 4;
-            // goompa2.style.left = posXe2 + "px";
 
             worldMove -= 1;
             document.querySelector("#main-container").style.left = worldMove + "px";
@@ -242,56 +204,3 @@ function dead() {
 Game.prototype = {
     constructor: Game
 };
-/*
-Game.Player = function (x, y) {
-
-     //mine
-    //  var img = document.getElementById("mario");
-    //  var pat = this.buffer.createPattern(img, no-repeat);
-
-     //mine
-     this.mario = document.querySelector(".mario");
-
-    this.color = "#ff0000";
-    // this.color = testing.testing;
-    //this.height = 16;
-    // this.width = 16;
-    this.jumping = true;
-    this.velocity_x = 0;
-    this.velocity_y = 0;
-    this.x = 10;
-    this.y = 50;
-
-};
-
-Game.Player.prototype = {
-
-    constructor: Game.Player,
-
-    jump: function () {
-
-        if (!this.jumping) {
-
-
-            this.jumping = true;
-            this.velocity_y -= 20;
-
-        }
-
-    },
-
-    moveLeft: function () {
-        this.velocity_x -= 0.5;
-    },
-    moveRight: function () {
-        this.velocity_x += 0.5;
-    },
-
-    update: function () {
-
-        this.x += this.velocity_x;
-        this.y += this.velocity_y;
-
-    }
-
-};*/
