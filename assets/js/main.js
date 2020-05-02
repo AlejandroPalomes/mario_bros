@@ -19,14 +19,21 @@ var posYe2 = parseInt(getComputedStyle(goompa2).bottom);
 var eTop2 = 0;
 var coinCount = 0;
 var score = 0;
+var time = 400;
 
 var solidBlocks = document.querySelectorAll(".collider");
 var coins = document.querySelectorAll(".coin");
+var tubes = document.querySelectorAll(".tube");
 
 
 function keyDownUp(event) {
     controller.keyDownUp(event.type, event.keyCode);
 };
+
+var restTime = setInterval(() => {
+    time--;
+    document.querySelector("#time").innerHTML = time;
+}, 1000);
 
 function update() {
 
@@ -43,6 +50,11 @@ function update() {
     game.update();
 
 };
+
+
+    
+
+
 
 /////////////////
 //// OBJECTS ////
@@ -81,6 +93,7 @@ function jump() {
         jumping = true;
         speedY =  80;
         mario.src = "assets/img/mario-jump-01.png"
+        document.querySelector(".theme").play();
         document.querySelector(".sounds").currentTime = 0.5;
         document.querySelector(".sounds").play();
     }

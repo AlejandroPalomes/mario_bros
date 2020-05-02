@@ -18,8 +18,9 @@ function Game() {
 
         collideObject: function () {
 
-            borderLeft++;
-            screenX++;
+            // borderLeft++;
+            // screenX++;
+
             if (posX < borderLeft) {
                 posX = borderLeft;
                 speedX = 0;
@@ -85,12 +86,37 @@ function Game() {
                         }
                 }
             });
-            // else if (object.y + object.height > this.height) {
-            //     jumping = false;
-                // object.jumping = false;
-                // object.y = this.height - object.height;
-                // object.velocity_y = 0;
-            // }
+            
+            tubes.forEach(element => {
+
+                var posXB = parseInt(element.style.left);
+                var posYB = parseInt(element.style.bottom);
+                var eTopB = posYB + element.height;
+
+                if(posY > posYB && posY <= eTopB && posX < posXB+element.width && posX+mario.width > posXB){
+                    var onTop = false;
+                    if(falling){
+                        posY = eTopB;
+                        speedY = 0;
+                        mario.src = "assets/img/mario-stand-01.png"
+                        onTop = true;
+                    }else if (posX+mario.width <= (posXB+element.width/2)){
+                        console.log("entro por izquierda")
+                        speedX=0;
+                        posX = posXB-mario.width;
+                    }else if (posX>posXB + element.width/2){
+                        console.log("entro por derecha")
+                        speedX = 0;
+                        posX = posXB+element.width;
+                    }
+
+                    // if(!onTop){
+                    //     console.log("border-top")
+                    //     posY = posYB - mario.height;
+                    //     speedY = 0;
+                    //     }
+                }
+            });
 
             coins.forEach(element => {
 
@@ -142,19 +168,12 @@ function Game() {
             posXe2 -= 4;
             goompa2.style.left = posXe2 + "px";
 
-            worldMove-= 1;
-            document.querySelector("#main-container").style.left = worldMove + "px";
+            // worldMove-= 1;
+            // document.querySelector("#main-container").style.left = worldMove + "px";
 
-
-            // this.player.velocity_y += this.gravity;
-            // this.player.update();
-
-            // this.player.velocity_x *= this.friction;
-            // this.player.velocity_y *= this.friction;
-
-
-            // this.collideObject(this.player);
             this.collideObject();
+
+            checkTime();
 
         }
 
@@ -167,6 +186,12 @@ function Game() {
     };
 
 };
+
+function checkTime(){
+    if (time == 0){
+        alert("GAME OVER");
+    }
+}
 
 Game.prototype = {
     constructor: Game
