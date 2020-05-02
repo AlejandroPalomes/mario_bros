@@ -49,9 +49,16 @@ body{
 #main-container{
     background: rgb(144, 150, 200);
     height: 520px;
-    width: 800px;
+    width: 1800px;
     position: relative;
     /* border: 10px solid rgb(214, 42, 22); */
+}
+
+#screen{
+    height: 520px;
+    width: 800px;
+    border: 1px solid red;
+    overflow: hidden;
 }
 
 

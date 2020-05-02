@@ -2,30 +2,32 @@
 function World(){
 
 }
-var previousY = Boolean;
-var worldMove = 0;
-var borderLeft = 0;
 
 function Game() {
-
+    var previousY = Boolean;
+    var worldMove = 0;
+    var borderLeft = 0;
+    var screenXInitial  = screenX;
+    
     this.world = { //with this, we say that world is an object of Game
-
+        
         background_color: "rgba(40,48,56,1)",
-
-        friction: 0.6,
+        
+        friction: 0.7,
         gravity: 8,
         gravityFriction: 0.8,
-
+        
         collideObject: function () {
-
-            // borderLeft++;
-            // screenX++;
+            
+            borderLeft++;
+            screenX++;
+            console.log(screenX-(screenXInitial-800))
 
             if (posX < borderLeft) {
                 posX = borderLeft;
                 speedX = 0;
-            } else if (posX + mario.width > screenX) {
-                posX = screenX-mario.width;
+            } else if (posX + mario.width > screenX-(screenXInitial-800)) {
+                posX = screenX-(screenXInitial-800)-mario.width;
                 speedX = 0;
             }
 
@@ -80,7 +82,7 @@ function Game() {
                     }
 
                     if(!onTop){
-                        console.log("border-top")
+                        // console.log("border-top")
                         posY = posYB - mario.height;
                         speedY = 0;
                         }
@@ -101,20 +103,17 @@ function Game() {
                         mario.src = "assets/img/mario-stand-01.png"
                         onTop = true;
                     }else if (posX+mario.width <= (posXB+element.width/2)){
-                        console.log("entro por izquierda")
+                        if(!controller.right.active && posY < 10){
+                            alert("gameover")
+                        }
+                        // console.log("entro por izquierda")
                         speedX=0;
                         posX = posXB-mario.width;
                     }else if (posX>posXB + element.width/2){
-                        console.log("entro por derecha")
+                        // console.log("entro por derecha")
                         speedX = 0;
                         posX = posXB+element.width;
                     }
-
-                    // if(!onTop){
-                    //     console.log("border-top")
-                    //     posY = posYB - mario.height;
-                    //     speedY = 0;
-                    //     }
                 }
             });
 
@@ -163,13 +162,13 @@ function Game() {
             eTop = posYe + goompa.clientHeight;
             eTop2 = posYe2 + parseInt(goompa2.height);
 
-            console.log(posYe2);
+            //console.log(posYe2);
 
             posXe2 -= 4;
             goompa2.style.left = posXe2 + "px";
 
-            // worldMove-= 1;
-            // document.querySelector("#main-container").style.left = worldMove + "px";
+            worldMove -= 1;
+            document.querySelector("#main-container").style.left = worldMove + "px";
 
             this.collideObject();
 
