@@ -18,6 +18,7 @@ var posXe2 = parseInt(getComputedStyle(goompa2).left);
 var posYe2 = parseInt(getComputedStyle(goompa2).bottom);
 var eTop2 = 0;
 var coinCount = 0;
+var score = 0;
 
 var solidBlocks = document.querySelectorAll(".collider");
 var coins = document.querySelectorAll(".coin");

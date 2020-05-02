@@ -1,9 +1,10 @@
 
 function World(){
-    
 
 }
 var previousY = Boolean;
+var worldMove = 0;
+var borderLeft = 0;
 
 function Game() {
 
@@ -17,8 +18,10 @@ function Game() {
 
         collideObject: function () {
 
-            if (posX < 0) {
-                posX = 0;
+            borderLeft++;
+            screenX++;
+            if (posX < borderLeft) {
+                posX = borderLeft;
                 speedX = 0;
             } else if (posX + mario.width > screenX) {
                 posX = screenX-mario.width;
@@ -50,8 +53,12 @@ function Game() {
                     speedY = 80;
                     goompa2.src = "assets/img/goompa3.png"
                     document.querySelector(".kill").play();
+                    score +=10;
+                    document.querySelector("#score").innerHTML = ('00000' + score).slice(-6);
                     var removeEnemy = setTimeout(function(){
-                        goompa2.style.bottom = "-150px";}, 1000);
+                        // goompa2.style.bottom = "-150px";
+                        goompa2.classList.add("hidden");
+                    }, 1000);
                 }
                 falling = false;
             }
@@ -68,20 +75,15 @@ function Game() {
                         posY = eTopB;
                         speedY = 0;
                         mario.src = "assets/img/mario-stand-01.png"
-                        // jumping = false;
-                        // falling = false;
                         onTop = true;
                     }
+
                     if(!onTop){
                         console.log("border-top")
                         posY = posYB - mario.height;
                         speedY = 0;
-
-                        //}else if (posY + mario.height > posYB && posY < eTopB && posX < posXB+element.width && posX+mario.width > posXB) {
-                            // object.jumping = false;
-                            // object.y = this.height - object.height;
                         }
-                    }
+                }
             });
             // else if (object.y + object.height > this.height) {
             //     jumping = false;
@@ -98,6 +100,7 @@ function Game() {
 
                 if(posY > posYC-11 && posY <= eTopC && posX < posXC+element.width && posX+mario.width > posXC){
                     element.style.bottom = -200 + "px";
+                    element.classList.add("hidden");
                     document.querySelector(".coinSound").currentTime = 0;
                     document.querySelector(".coinSound").play();
                     coinCount++
@@ -135,6 +138,12 @@ function Game() {
             eTop2 = posYe2 + parseInt(goompa2.height);
 
             console.log(posYe2);
+
+            posXe2 -= 4;
+            goompa2.style.left = posXe2 + "px";
+
+            worldMove-= 1;
+            document.querySelector("#main-container").style.left = worldMove + "px";
 
 
             // this.player.velocity_y += this.gravity;
