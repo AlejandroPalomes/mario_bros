@@ -3,9 +3,9 @@ function World() {
 }
 
 function Game() {
-    var screenDisplacement = 200;
+    var screenDisplacement = 0;
     var previousY = Boolean;
-    var worldMove = 200;
+    var worldMove = 00;
     var borderLeft = 0 - screenDisplacement;
     var screenXInitial = screenX;
 
