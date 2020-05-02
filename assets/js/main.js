@@ -19,6 +19,8 @@ var coinCount = 0;
 var score = 0;
 var time = 400;
 
+var worldSpeed = 1;
+
 var alive = true;
 
 

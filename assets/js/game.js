@@ -5,7 +5,7 @@ function World() {
 function Game() {
     var screenDisplacement = 0;
     var previousY = Boolean;
-    var worldMove = 00;
+    var worldMove = 0;
     var borderLeft = 0 - screenDisplacement;
     var screenXInitial = screenX;
 
@@ -26,8 +26,8 @@ function Game() {
             if (posX < borderLeft) {
                 posX = borderLeft;
                 speedX = 0;
-            } else if (posX + mario.width > screenX - screenDisplacement - (screenXInitial - 800)) {
-                posX = screenX - screenDisplacement - (screenXInitial - 800) - mario.width;
+            } else if (posX + mario.width > screenX - (screenXInitial - 800)) {
+                posX = screenX - (screenXInitial - 800) - mario.width;
                 speedX = 0;
             }
 
@@ -94,6 +94,9 @@ function Game() {
                     if (!onTop) {
                         posY = posYB - mario.height;
                         speedY = 0;
+                        if (element.classList.contains("question")) {
+                            element.src = "assets/img/question2.png"
+                        }
                     }
                 }
             });
@@ -175,41 +178,41 @@ function Game() {
             goompa.forEach(function (element) {
                 speed = -1;
                 posXG = parseInt(element.style.left);
-                
+
                 //? AI in Goompa Collider
                 var leftTube = parseInt(element.previousElementSibling.style.left);
                 var leftTubeW = element.previousElementSibling.width;
                 var rightTube = parseInt(element.nextElementSibling.style.left);
                 var rightTubeW = element.nextElementSibling.width;
 
-                if(element.previousElementSibling.classList.contains("tube")){
-                    if(posXG < leftTube+leftTubeW){
+                if (element.previousElementSibling.classList.contains("tube")) {
+                    if (posXG < leftTube + leftTubeW) {
                         element.classList.remove("moveLeft")
                     }
 
-                    if(element.classList.contains("moveLeft")){
+                    if (element.classList.contains("moveLeft")) {
                         console.log("goompa moving left")
                         element.style.left = posXG + "px";
                         posXG--;
-                    }else{
+                    } else {
                         console.log("goompa moving right")
-                        posXG+=2;
+                        posXG += 2;
                         element.style.left = posXG + "px";
                     }
                 }
 
-                if(element.nextElementSibling.classList.contains("tube")){
-                    if(posXG+element.width > rightTube){
+                if (element.nextElementSibling.classList.contains("tube")) {
+                    if (posXG + element.width > rightTube) {
                         element.classList.add("moveLeft")
                     }
 
-                    if(element.classList.contains("moveLeft")){
+                    if (element.classList.contains("moveLeft")) {
                         console.log("goompa moving left")
                         element.style.left = posXG + "px";
                         posXG--;
-                    }else{
+                    } else {
                         console.log("goompa moving right")
-                        posXG+=2;
+                        posXG += 2;
                         element.style.left = posXG + "px";
                     }
                 }
@@ -218,7 +221,11 @@ function Game() {
                 element.style.left = posXG + "px";
             })
 
-            worldMove -= 1;
+            //screenX += worldSpeed;
+
+            //console.log((screenX++)-(screenX-800), posX)
+
+            worldMove -= worldSpeed;
             document.querySelector("#main-container").style.left = worldMove + "px";
 
             this.collideObject();
