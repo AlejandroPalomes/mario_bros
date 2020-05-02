@@ -21,6 +21,9 @@ var coinCount = 0;
 var score = 0;
 var time = 400;
 
+var alive = true;
+
+
 var solidBlocks = document.querySelectorAll(".collider");
 var coins = document.querySelectorAll(".coin");
 var tubes = document.querySelectorAll(".tube");
@@ -46,8 +49,9 @@ function update() {
     if (controller.up.active) {
         jump();
     }
-
-    game.update();
+    if(alive){
+        game.update();
+    }
 
 };
 

@@ -4,9 +4,10 @@ function World(){
 }
 
 function Game() {
+    var screenDisplacement = 200;
     var previousY = Boolean;
-    var worldMove = 0;
-    var borderLeft = 0;
+    var worldMove = 200;
+    var borderLeft = 0-screenDisplacement;
     var screenXInitial  = screenX;
     
     this.world = { //with this, we say that world is an object of Game
@@ -26,8 +27,8 @@ function Game() {
             if (posX < borderLeft) {
                 posX = borderLeft;
                 speedX = 0;
-            } else if (posX + mario.width > screenX-(screenXInitial-800)) {
-                posX = screenX-(screenXInitial-800)-mario.width;
+            } else if (posX + mario.width > screenX-screenDisplacement-(screenXInitial-800)) {
+                posX = screenX-screenDisplacement-(screenXInitial-800)-mario.width;
                 speedX = 0;
             }
 
@@ -104,7 +105,9 @@ function Game() {
                         onTop = true;
                     }else if (posX+mario.width <= (posXB+element.width/2)){
                         if(!controller.right.active && posY < 10){
-                            alert("gameover")
+                            // alert("gameover")
+                            mario.src = "assets/img/mario-out.png"
+                            alive = false;
                         }
                         // console.log("entro por izquierda")
                         speedX=0;
