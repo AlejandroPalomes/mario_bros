@@ -91,10 +91,10 @@ var game = new Game();
 display();
 document.addEventListener("keydown", keyDownUp);
 document.addEventListener("keyup", keyDownUp);
-window.addEventListener("touchstart", function(){
-    document.querySelector("body").style.backgroundColor = "red";
-    //jump()
-})
+// window.addEventListener("touchstart", function(){
+//     document.querySelector("body").style.backgroundColor = "red";
+//     //jump()
+// })
 window.addEventListener("resize", display)
 
 // });
