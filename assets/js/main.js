@@ -17,6 +17,7 @@ var eTop = 0;
 var eTop2 = 0;
 var coinCount = 0;
 var score = 0;
+var currentUser;
 var time = 400;
 var floor = document.querySelectorAll(".floor__section");
 
@@ -83,7 +84,7 @@ var controller = new Controller();
 var game = new Game();
 // var engine = new Engine(1000 / 30, update);
 
-engine();
+// engine();
 
 ////////////////////
 //// INITIALIZE ////
@@ -91,11 +92,21 @@ engine();
 display();
 document.addEventListener("keydown", keyDownUp);
 document.addEventListener("keyup", keyDownUp);
+document.querySelector("#start-submit").addEventListener("click", function(){
+    event.preventDefault();
+    document.querySelector(".login__container").classList.add("hidden");
+    document.querySelector(".stats").classList.remove("hidden");
+    document.querySelector("#screen").classList.remove("hidden");
+    document.querySelector("#floor").classList.remove("hidden");
+    engine();
+})
 // window.addEventListener("touchstart", function(){
 //     document.querySelector("body").style.backgroundColor = "red";
 //     jump()
 // })
 window.addEventListener("resize", display)
+// document.querySelector(".theme").play();
+document.querySelector(".theme").loop = true;
 
 // });
 
@@ -112,11 +123,10 @@ function jump() {
         jumping = true;
         speedY =  70;
         mario.src = "assets/img/mario-jump-01.png"
-        //document.querySelector(".theme").play();
+    
         document.querySelector(".sounds").currentTime = 0.5;
         document.querySelector(".sounds").volume = 0.3;
         document.querySelector(".sounds").play();
-        document.querySelector(".theme").loop = true;
     }
 
 }

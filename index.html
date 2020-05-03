@@ -10,16 +10,23 @@
 </head>
 <body class="d-flex">
     <div class="d-flex resize">
-        <div id="login" class="">
-            <div class="d-flex plate">
-                <div class="asdf">
-                    <div>SUPER WEB</div>
-                    <div>MARIO BROS.</div>
+        <div class="d-flex login__container">
+            <div id="login" class="">
+                <div class="d-flex plate">
+                    <div class="asdf">
+                        <div>SUPER WEB</div>
+                        <div>MARIO BROS.</div>
+                    </div>
                 </div>
+                <form class="d-flex">
+                    <label for="player">Enter Player Name</label>
+                    <input type="text" name="player" placeholder="enter name" id="player">
+                    <input type="submit" class="" value="Start" id="start-submit">
+                </form>
             </div>
         </div>
         <!-- <canvas></canvas> -->
-        <div class="d-flex stats">
+        <div class="d-flex stats hidden">
             <div class="stats__box d-flex">
                 <span>MARIO</span>
                 <span id="score">000000</span>
@@ -36,7 +43,7 @@
                 <span id="time">400</span>
             </div>
         </div>
-        <div id="screen">
+        <div id="screen" class="hidden">
             <div id="main-container">
                 <div class="background">
                     <!--? CLOUDS ?-->
@@ -185,7 +192,7 @@
                 <audio class="dead" src="assets/sound/dead.mp4"></audio>
             </div>
         </div>
-        <div id="floor">
+        <div id="floor" class="hidden">
             <img class="floor__section absolute" height="80px" width="3080px" style="left: 0">
             <img class="floor__section absolute" height="80px" width="600px" style="left: 3160px">
             <img class="floor__section absolute" height="80px" width="2560px" style="left: 3880px">

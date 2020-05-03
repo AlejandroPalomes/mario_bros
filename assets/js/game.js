@@ -66,7 +66,7 @@ function Game() {
                         speedY = 80;
                         element.src = "assets/img/goomba3.png"
                         document.querySelector(".kill").play();
-                        score += 10;
+                        score += 100;
                         document.querySelector("#score").innerHTML = ('00000' + score).slice(-6);
                         element.classList.remove("alive");
                         var removeEnemy = setTimeout(function () {
