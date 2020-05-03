@@ -27,6 +27,7 @@ var alive = true;
 var solidBlocks = document.querySelectorAll(".collider");
 var coins = document.querySelectorAll(".coin");
 var tubes = document.querySelectorAll(".tube");
+var pyramid = document.querySelectorAll(".tube");
 
 
 function keyDownUp(event) {
@@ -93,7 +94,7 @@ function jump() {
         jumping = true;
         speedY =  80;
         mario.src = "assets/img/mario-jump-01.png"
-        document.querySelector(".theme").play();
+        //document.querySelector(".theme").play();
         document.querySelector(".sounds").currentTime = 0.5;
         document.querySelector(".sounds").volume = 0.3;
         document.querySelector(".sounds").play();
