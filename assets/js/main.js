@@ -91,7 +91,7 @@ var game = new Game();
 display();
 document.addEventListener("keydown", keyDownUp);
 document.addEventListener("keyup", keyDownUp);
-document.addEventListener("touchstart", function(){
+window.addEventListener("touchstart", function(){
     document.querySelector("body").style.background = "red"
 })
 window.addEventListener("resize", display)
