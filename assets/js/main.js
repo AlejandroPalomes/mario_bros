@@ -92,7 +92,13 @@ var game = new Game();
 display();
 document.addEventListener("keydown", keyDownUp);
 document.addEventListener("keyup", keyDownUp);
+document.querySelector(".start__button").addEventListener("click", function(){
+    event.preventDefault();
+    console.log("working button")
+    document.querySelector("#start-submit").click();
+});
 document.querySelector("#start-submit").addEventListener("click", function(){
+    console.log("working submit")
     event.preventDefault();
     document.querySelector(".login__container").classList.add("hidden");
     document.querySelector(".stats").classList.remove("hidden");

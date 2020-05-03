@@ -34,6 +34,7 @@ body {
     align-items: center;
     overflow: hidden;
 }
+
 /* @media (max-width: 800px) {
     .resize {
         transform: scale(0.5);
@@ -52,15 +53,15 @@ body {
 
 form {
     flex-direction: column;
-    height: 100px;
-    margin-top: 20px;
+    height: 125px;
+    margin-top: 10px;
     color: white;
     align-items: center;
     justify-content: space-evenly;
 }
 
 input{
-    font-size: 16px;
+    font-size: 17px;
 }
 
 #player{
@@ -78,7 +79,6 @@ input{
 #login{
     width: 450px;
     height: 405px;
-    border: 1px solid blue;
     position: absolute;
     
     /* z-index: 1; */
@@ -108,18 +108,33 @@ input{
     transform: translateY(-8px)
 }
 
-.asdf > div:nth-child(1){
+.title__name > div:nth-child(1){
     font-size: 30px;
     color: #FFD7B3;
     transform: scaleY(2);
     /* transform: translateY(40px); */
     text-shadow: 2px 5px black;
 }
-.asdf > div:nth-child(2){
+.title__name > div:nth-child(2){
     font-size: 35px;
     color: #FFD7B3;
     transform: scaleY(3);
     text-shadow: 2px 5px black;
+}
+
+.start__button{
+    height: 20px;
+    width: 200px;
+    background: rgba(0,0,0,0);
+    border-radius: 5px;
+    color: white;
+}
+
+.top__score{
+    display: inline-block;
+    color: white;
+    margin-left: 30%;
+    margin-top: 15px;
 }
 
 .stats {

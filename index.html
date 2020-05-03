@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Super Web Mario Bros by Alex Palomes</title>
     <!-- <link rel="stylesheet" href="styles2.css"> -->
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -13,7 +13,7 @@
         <div class="d-flex login__container">
             <div id="login" class="">
                 <div class="d-flex plate">
-                    <div class="asdf">
+                    <div class="title__name">
                         <div>SUPER WEB</div>
                         <div>MARIO BROS.</div>
                     </div>
@@ -21,10 +21,11 @@
                 <form class="d-flex">
                     <label for="player">Enter Player Name</label>
                     <input type="text" name="player" placeholder="enter name" id="player">
-                    <input type="submit" class="" value="Start" id="start-submit">
+                    <button class="start__button">Start</button>
+                    <input type="submit" class="hidden" value="Start" id="start-submit">
                 </form>
+                <span class="top__score">top- <span>000000</span></span>
             </div>
-            <span>top- <span></span></span>
         </div>
         <!-- <canvas></canvas> -->
         <div class="d-flex stats hidden">
