@@ -1,6 +1,6 @@
 var mario = document.querySelector(".mario");
-var goompa = document.querySelectorAll(".goompa");
-// var goompa2 = document.querySelector(".goompa2");
+var goomba = document.querySelectorAll(".goomba");
+// var goomba2 = document.querySelector(".goomba2");
 var screen = document.querySelector("#main-container");
 var screenX = parseInt(getComputedStyle(screen).width);
 var speedX = 0;
@@ -12,8 +12,8 @@ var falling = false;
 var posXe = 0;
 var posYe = 0;
 var eTop = 0;
-// var posXe2 = parseInt(getComputedStyle(goompa2).left);
-// var posYe2 = parseInt(getComputedStyle(goompa2).bottom);
+// var posXe2 = parseInt(getComputedStyle(goomba2).left);
+// var posYe2 = parseInt(getComputedStyle(goomba2).bottom);
 var eTop2 = 0;
 var coinCount = 0;
 var score = 0;
@@ -28,18 +28,18 @@ var solidBlocks = document.querySelectorAll(".collider");
 var coins = document.querySelectorAll(".coin");
 var tubes = document.querySelectorAll(".tube");
 
-var walkinGoompa = setInterval(function(){
-    goompa.forEach(function(element){
+var walkigGoomba = setInterval(function(){
+    goomba.forEach(function(element){
         if (element.classList.contains("alive") && element.classList.contains("walk")){
-            element.src = "assets/img/goompa1.png";
+            element.src = "assets/img/goomba1.png";
             element.classList.toggle("walk");
         }else if(element.classList.contains("alive") && !element.classList.contains("walk")){
-            element.src = "assets/img/goompa2.png";
+            element.src = "assets/img/goomba2.png";
             element.classList.toggle("walk");
         }
     })
     
-}, 500);
+}, 300);
 
 function keyDownUp(event) {
     controller.keyDownUp(event.type, event.keyCode);
