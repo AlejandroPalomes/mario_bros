@@ -30,12 +30,18 @@ function Game() {
                 speedX = 0;
             }
 
-            if (posY < 0) {
-                posY = 0;
-                speedY = 0;
-                mario.src = "assets/img/mario-stand-01.png"
-                jumping = false;
-                falling = false;
+            if((posX>3075 && posX<3155)||(posX>3755 && posX<3875)||(posX>6435 && posX<6515)){
+                if (posY < -80){
+                    dead();
+                }
+            }else {
+                if (posY < 0) {
+                    posY = 0;
+                    speedY = 0;
+                    mario.src = "assets/img/mario-stand-01.png"
+                    jumping = false;
+                    falling = false;
+                }
             }
 
 
@@ -169,6 +175,9 @@ function Game() {
             mario.style.left = posX + "px";
             mario.style.bottom = posY + "px";
 
+            console.log(posX, posY)
+
+            
             //!goomba movement\\
             goomba.forEach(function (element) {
 
@@ -184,7 +193,7 @@ function Game() {
                     var tube3 = parseInt(document.querySelector("#tube3").style.left);
                     var tube3W = document.querySelector("#tube3").width;
                     var tube4 = parseInt(document.querySelector("#tube4").style.left);
-                    var rightTubeW = element.nextElementSibling.width;
+                    //var rightTubeW = element.nextElementSibling.width;
 
 
                     if(element.id == "goomba2" || element.id == "goomba3"){
