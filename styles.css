@@ -75,10 +75,10 @@ body{
     bottom: 0px;
     left: 0px;
 }
-/* .goompa{
+/* .goomba{
     bottom: 0;
 }
-.goompa2{
+.goomba2{
     bottom: 0px;
     left: 500px;
 } */
@@ -98,12 +98,12 @@ body{
 }
 
 .dead{
-    background-image: url(assets/img/goompa3.png);
+    background-image: url(assets/img/goomba3.png);
     background-size: cover;
 }
 
 .walk{
-    background-image: url(assets/img/goompa2.png);
+    background-image: url(assets/img/goomba2.png);
 }
 
 .hidden{
