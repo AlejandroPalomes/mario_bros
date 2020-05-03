@@ -87,14 +87,14 @@ var game = new Game();
 ////////////////////
 //// INITIALIZE ////
 ////////////////////0
-//engine();
+engine();
 display();
 document.addEventListener("keydown", keyDownUp);
 document.addEventListener("keyup", keyDownUp);
-// window.addEventListener("touchstart", function(){
-//     document.querySelector("body").style.backgroundColor = "red";
-//     //jump()
-// })
+window.addEventListener("touchstart", function(){
+    document.querySelector("body").style.backgroundColor = "red";
+    jump()
+})
 window.addEventListener("resize", display)
 
 // });
