@@ -169,29 +169,25 @@ function Game() {
             mario.style.left = posX + "px";
             mario.style.bottom = posY + "px";
 
-            console.log(posX)
-
             //!goompa movement\\
             goompa.forEach(function (element) {
 
-                if(posX > parseInt(element.style.left)-900){
-                    console.log("inside the if")
-                    console.log(element.style.left)
+                if (posX > parseInt(element.style.left) - 900) {
 
                     speed = -1;
                     posXG = parseInt(element.style.left);
-    
+
                     //? AI in Goompa Collider
                     var leftTube = parseInt(element.previousElementSibling.style.left);
                     var leftTubeW = element.previousElementSibling.width;
                     var rightTube = parseInt(element.nextElementSibling.style.left);
                     var rightTubeW = element.nextElementSibling.width;
-    
+
                     if (element.previousElementSibling.classList.contains("tube")) {
                         if (posXG < leftTube + leftTubeW) {
                             element.classList.remove("moveLeft")
                         }
-    
+
                         if (element.classList.contains("moveLeft")) {
                             element.style.left = posXG + "px";
                             posXG--;
@@ -200,12 +196,12 @@ function Game() {
                             element.style.left = posXG + "px";
                         }
                     }
-    
+
                     if (element.nextElementSibling.classList.contains("tube")) {
                         if (posXG + element.width > rightTube) {
                             element.classList.add("moveLeft")
                         }
-    
+
                         if (element.classList.contains("moveLeft")) {
                             element.style.left = posXG + "px";
                             posXG--;
@@ -213,12 +209,12 @@ function Game() {
                             posXG += 2;
                             element.style.left = posXG + "px";
                         }
-                    }else if(element.nextElementSibling.nextElementSibling.classList.contains("tube")){
+                    } else if (element.nextElementSibling.nextElementSibling.classList.contains("tube")) {
                         if (posXG + element.width > parseInt(element.nextElementSibling.nextElementSibling.style.left)) {
                             element.classList.add("remove")
                         }
                     }
-    
+
                     posXG += speed;
                     element.style.left = posXG + "px";
                 }

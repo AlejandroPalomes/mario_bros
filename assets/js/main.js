@@ -27,8 +27,19 @@ var alive = true;
 var solidBlocks = document.querySelectorAll(".collider");
 var coins = document.querySelectorAll(".coin");
 var tubes = document.querySelectorAll(".tube");
-var pyramid = document.querySelectorAll(".tube");
 
+var walkinGoompa = setInterval(function(){
+    goompa.forEach(function(element){
+        if (element.classList.contains("alive") && element.classList.contains("walk")){
+            element.src = "assets/img/goompa1.png";
+            element.classList.toggle("walk");
+        }else if(element.classList.contains("alive") && !element.classList.contains("walk")){
+            element.src = "assets/img/goompa2.png";
+            element.classList.toggle("walk");
+        }
+    })
+    
+}, 500);
 
 function keyDownUp(event) {
     controller.keyDownUp(event.type, event.keyCode);
@@ -90,7 +101,6 @@ function moveLeft() {
 
 function jump() {
     if (!jumping){
-        console.log("jump() called")
         jumping = true;
         speedY =  80;
         mario.src = "assets/img/mario-jump-01.png"
