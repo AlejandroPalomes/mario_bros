@@ -20,6 +20,9 @@ var score = 0;
 var time = 400;
 var floor = document.querySelectorAll(".floor__section");
 
+var windowSize = window.innerWidth;
+console.log(windowSize)
+
 
 var worldSpeed = 3;
 
@@ -66,6 +69,8 @@ function update() {
     if(alive){
         game.update();
     }
+
+    display()
 
 };
 

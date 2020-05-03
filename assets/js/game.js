@@ -30,7 +30,7 @@ function Game() {
                 speedX = 0;
             }
 
-            if((posX>3080 && posX<3160)||(posX>3760 && posX<3880)||(posX>6440 && posX<6520)){
+            if((posX+(mario.width/2)>3080 && posX+(mario.width/2)<3160)||(posX+(mario.width/2)>3760 && posX+(mario.width/2)<3880)||(posX+(mario.width/2)>6440 && posX+(mario.width/2)<6520)){
                 if (posY < -80){
                     dead();
                 }
@@ -175,8 +175,6 @@ function Game() {
             mario.style.left = posX + "px";
             mario.style.bottom = posY + "px";
 
-
-
             //!goomba movement\\
             goomba.forEach(function (element) {
 
@@ -192,6 +190,9 @@ function Game() {
                     var tube3 = parseInt(document.querySelector("#tube3").style.left);
                     var tube3W = document.querySelector("#tube3").width;
                     var tube4 = parseInt(document.querySelector("#tube4").style.left);
+                    var tube5 = parseInt(document.querySelector("#tube3").style.left);
+                    var tube5W = document.querySelector("#tube3").width;
+                    var tube6 = parseInt(document.querySelector("#tube4").style.left);
                     //var rightTubeW = element.nextElementSibling.width;
 
 
@@ -207,11 +208,28 @@ function Game() {
                             posXG--;
                             element.style.left = posXG + "px";
                         } else {
-                            posXG += worldSpeed+1;
+                            posXG += worldSpeed;
                             element.style.left = posXG + "px";
                         }
 
-                    }else{
+                    }else if(element.id == "goomba13" || element.id == "goomba14"){
+
+                        if (posXG < tube5 + tube5W) {
+                            element.classList.remove("moveLeft")
+                        }else if(posXG+element.width > tube6){
+                            element.classList.add("moveLeft")
+                        }
+
+                        if (element.classList.contains("moveLeft")) {
+                            posXG--;
+                            element.style.left = posXG + "px";
+                        } else {
+                            posXG += worldSpeed;
+                            element.style.left = posXG + "px";
+                        }
+
+                    }
+                    else{
                         if (element.previousElementSibling.classList.contains("tube")) {
                             if (posXG < leftTube + leftTubeW) {
                                 element.classList.remove("moveLeft")
@@ -220,7 +238,7 @@ function Game() {
                                 posXG--;
                                 element.style.left = posXG + "px";
                             } else {
-                                posXG += worldSpeed+1;
+                                posXG += worldSpeed;
                                 element.style.left = posXG + "px";
                             }
                         }
@@ -234,7 +252,7 @@ function Game() {
                                 posXG--;
                                 element.style.left = posXG + "px";
                             } else {
-                                posXG += worldSpeed+1;
+                                posXG += worldSpeed;
                                 element.style.left = posXG + "px";
                             }
     
