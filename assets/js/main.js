@@ -69,7 +69,7 @@ function update() {
         game.update();
     }
 
-    display()
+    //display()
 
 };
 
@@ -83,14 +83,18 @@ var controller = new Controller();
 var game = new Game();
 // var engine = new Engine(1000 / 30, update);
 
-engine();
 
 ////////////////////
 //// INITIALIZE ////
 ////////////////////0
-
+//engine();
+display();
 document.addEventListener("keydown", keyDownUp);
 document.addEventListener("keyup", keyDownUp);
+document.addEventListener("ontouchstart", function(){
+    document.querySelector("body").style.background = "red"
+})
+window.addEventListener("resize", display)
 
 // });
 
@@ -105,7 +109,7 @@ function moveLeft() {
 function jump() {
     if (!jumping){
         jumping = true;
-        speedY =  80;
+        speedY =  70;
         mario.src = "assets/img/mario-jump-01.png"
         //document.querySelector(".theme").play();
         document.querySelector(".sounds").currentTime = 0.5;
