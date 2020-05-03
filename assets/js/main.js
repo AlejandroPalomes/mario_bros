@@ -92,7 +92,7 @@ display();
 document.addEventListener("keydown", keyDownUp);
 document.addEventListener("keyup", keyDownUp);
 window.addEventListener("touchstart", function(){
-    document.querySelector("body").style.background = "red"
+    document.querySelector("body").style.backgroundColor = "red"
 })
 window.addEventListener("resize", display)
 
