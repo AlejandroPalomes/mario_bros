@@ -55,19 +55,26 @@ body {
     align-items: center;
 }
 
-.plate div:nth-child(1){
-    border: 1px solid blue;
+.plate > div{
+    display: flex;
+    flex-direction: column;
+    height: 130px;
+    align-items: flex-start;
+    justify-content: space-between;
+    transform: translateY(-8px)
+}
+
+.asdf > div:nth-child(1){
     font-size: 30px;
     color: #FFD7B3;
-    /* font-stretch: ultra-condensed; */
-    transform: scaleY(1.5);
+    transform: scaleY(2);
+    /* transform: translateY(40px); */
     text-shadow: 2px 5px black;
 }
-.plate div:nth-child(2){
-    border: 1px solid yellow;
+.asdf > div:nth-child(2){
     font-size: 35px;
     color: #FFD7B3;
-    transform: scaleY(3.5);
+    transform: scaleY(3);
     text-shadow: 2px 5px black;
 }
 

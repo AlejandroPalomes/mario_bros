@@ -83,7 +83,7 @@ var controller = new Controller();
 var game = new Game();
 // var engine = new Engine(1000 / 30, update);
 
-//engine();
+engine();
 
 ////////////////////
 //// INITIALIZE ////
