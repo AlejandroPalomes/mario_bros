@@ -39,9 +39,9 @@ function Game() {
             }
 
 
-            //!GOOMPA PHYSICS\\
+            //!GOOMBA PHYSICS\\
 
-            goompa.forEach(function (element) {
+            goomba.forEach(function (element) {
                 var posXG = parseInt(element.style.left);
                 var posYG = parseInt(element.style.bottom);
                 var eTopG = posYG + element.height;
@@ -58,7 +58,7 @@ function Game() {
                         //alive = false;
                         posYG = -100;
                         speedY = 80;
-                        element.src = "assets/img/goompa3.png"
+                        element.src = "assets/img/goomba3.png"
                         document.querySelector(".kill").play();
                         score += 10;
                         document.querySelector("#score").innerHTML = ('00000' + score).slice(-6);
@@ -169,15 +169,15 @@ function Game() {
             mario.style.left = posX + "px";
             mario.style.bottom = posY + "px";
 
-            //!goompa movement\\
-            goompa.forEach(function (element) {
+            //!goomba movement\\
+            goomba.forEach(function (element) {
 
                 if (posX > parseInt(element.style.left) - 900) {
 
                     speed = -1;
                     posXG = parseInt(element.style.left);
 
-                    //? AI in Goompa Collider
+                    //? AI in Goomba Collider
                     var leftTube = parseInt(element.previousElementSibling.style.left);
                     var leftTubeW = element.previousElementSibling.width;
                     var rightTube = parseInt(element.nextElementSibling.style.left);
