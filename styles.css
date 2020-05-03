@@ -1,18 +1,18 @@
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: 'Press Start 2P', cursive;
 }
 
-.d-flex{
+.d-flex {
     display: flex;
 }
 
-.absolute{
+.absolute {
     position: absolute;
 }
 
-body{
+body {
     background: black;
     height: 100vh;
     flex-direction: column;
@@ -20,7 +20,7 @@ body{
     align-items: center;
 }
 
-.stats{
+.stats {
     position: absolute;
     z-index: 1;
     width: 740px;
@@ -29,30 +29,38 @@ body{
     color: white;
     margin: 0px auto;
     justify-content: space-between;
-    -webkit-touch-callout: none; /* iOS Safari */
-        -webkit-user-select: none; /* Safari */
-        -khtml-user-select: none; /* Konqueror HTML */
-            -moz-user-select: none; /* Old versions of Firefox */
-            -ms-user-select: none; /* Internet Explorer/Edge */
-                user-select: none;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
 }
 
-.stats__box{
+.stats__box {
     flex-direction: column;
 }
-.stats__box:nth-child(2){
+
+.stats__box:nth-child(2) {
     height: 40px;
     justify-content: flex-end;
     align-items: center;
 }
-.stats__box:nth-child(3){
+
+.stats__box:nth-child(3) {
     align-items: center;
 }
-.stats__box:last-child{
+
+.stats__box:last-child {
     align-items: flex-end;
 }
 
-#main-container{
+#main-container {
     background: rgb(144, 150, 200);
     height: 520px;
     width: 9000px;
@@ -60,7 +68,7 @@ body{
     /* border: 10px solid rgb(214, 42, 22); */
 }
 
-#screen{
+#screen {
     height: 520px;
     width: 800px;
     border: 1px solid red;
@@ -68,13 +76,15 @@ body{
 }
 
 
-.mario{
+.mario {
     margin-bottom: 8px;
     margin-top: 20px;
     position: absolute;
     bottom: 0px;
     left: 0px;
+    z-index: 1;
 }
+
 /* .goomba{
     bottom: 0;
 }
@@ -83,48 +93,67 @@ body{
     left: 500px;
 } */
 
-.jump-image{
+.jump-image {
     background-image: url(assets/img/mario-jump-01.png);
     transition: none;
 }
-.jump{
+
+.jump {
     /* transform: translateY(-100px); */
     bottom: 150px;
     transition: bottom 0.5s ease;
 }
 
-.right{
+.right {
     transform: translateX(10px);
 }
 
-.dead{
+.dead {
     background-image: url(assets/img/goomba3.png);
     background-size: cover;
 }
 
-.walk{
+.walk {
     background-image: url(assets/img/goomba2.png);
 }
 
-.hidden{
+.hidden {
     display: none;
 }
 
-#floor{
+#floor {
     height: 80px;
     width: 800px;
+    position: relative;
+    overflow: hidden;
+}
+
+.floor__section {
     background-image: url(assets/img/floor-tile.png);
     background-repeat: repeat;
     background-size: 40px;
 }
 
-.background{
+.background {
     position: absolute;
     bottom: 0;
 }
 
-.pyramid{
+.pyramid {
     background-image: url(assets/img/ramp.png);
     background-repeat: repeat;
     background-size: 40px;
+}
+
+.mario__dead {
+    /* transform: translateY(-150px);
+    transition: 0.3s ease-out; */
+    animation: deadMove 2s ease;
+}
+
+@keyframes deadMove {
+    0% {transform: translateY(0px);}
+    20% {transform: translateY(-100px);}
+    25% {transform: translateY(-100px);}
+    100% {transform: translateY(200px);}
 }

@@ -19,8 +19,8 @@ function Game() {
 
         collideObject: function () {
 
-            borderLeft++;
-            screenX++;
+            borderLeft+= worldSpeed;
+            screenX+= worldSpeed;
 
             if (posX < borderLeft) {
                 posX = borderLeft;
@@ -30,7 +30,7 @@ function Game() {
                 speedX = 0;
             }
 
-            if((posX>3075 && posX<3155)||(posX>3755 && posX<3875)||(posX>6435 && posX<6515)){
+            if((posX>3080 && posX<3160)||(posX>3760 && posX<3880)||(posX>6440 && posX<6520)){
                 if (posY < -80){
                     dead();
                 }
@@ -175,9 +175,8 @@ function Game() {
             mario.style.left = posX + "px";
             mario.style.bottom = posY + "px";
 
-            console.log(posX, posY)
 
-            
+
             //!goomba movement\\
             goomba.forEach(function (element) {
 
@@ -208,7 +207,7 @@ function Game() {
                             posXG--;
                             element.style.left = posXG + "px";
                         } else {
-                            posXG += 2;
+                            posXG += worldSpeed+1;
                             element.style.left = posXG + "px";
                         }
 
@@ -221,7 +220,7 @@ function Game() {
                                 posXG--;
                                 element.style.left = posXG + "px";
                             } else {
-                                posXG += 2;
+                                posXG += worldSpeed+1;
                                 element.style.left = posXG + "px";
                             }
                         }
@@ -235,7 +234,7 @@ function Game() {
                                 posXG--;
                                 element.style.left = posXG + "px";
                             } else {
-                                posXG += 2;
+                                posXG += worldSpeed+1;
                                 element.style.left = posXG + "px";
                             }
     
@@ -252,6 +251,12 @@ function Game() {
 
             worldMove -= worldSpeed;
             document.querySelector("#main-container").style.left = worldMove + "px";
+
+            floor.forEach(function(element){
+                prevPos = parseInt(element.style.left);
+                prevPos -= worldSpeed;
+                element.style.left = prevPos + "px";
+            })
 
             this.collideObject();
 
@@ -279,6 +284,11 @@ function dead() {
     mario.src = "assets/img/mario-out.png"
     alive = false;
     document.querySelector(".theme").pause();
+    document.querySelector(".dead").currentTime = 0.3;
+    document.querySelector(".dead").play();
+    var deadAnimation = setTimeout(function(){
+        mario.classList.add("mario__dead");
+    },750);
 }
 
 Game.prototype = {

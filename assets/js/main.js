@@ -18,8 +18,10 @@ var eTop2 = 0;
 var coinCount = 0;
 var score = 0;
 var time = 400;
+var floor = document.querySelectorAll(".floor__section");
 
-var worldSpeed = 1;
+
+var worldSpeed = 3;
 
 var alive = true;
 
