@@ -83,18 +83,18 @@ var controller = new Controller();
 var game = new Game();
 // var engine = new Engine(1000 / 30, update);
 
+engine();
 
 ////////////////////
 //// INITIALIZE ////
 ////////////////////0
-engine();
 display();
 document.addEventListener("keydown", keyDownUp);
 document.addEventListener("keyup", keyDownUp);
-window.addEventListener("touchstart", function(){
-    document.querySelector("body").style.backgroundColor = "red";
-    jump()
-})
+// window.addEventListener("touchstart", function(){
+//     document.querySelector("body").style.backgroundColor = "red";
+//     jump()
+// })
 window.addEventListener("resize", display)
 
 // });
