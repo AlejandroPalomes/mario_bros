@@ -21,8 +21,7 @@ var time = 400;
 var floor = document.querySelectorAll(".floor__section");
 
 var windowSize = window.innerWidth;
-console.log(windowSize)
-
+var resizeContainer = document.querySelector(".resize");
 
 var worldSpeed = 3;
 
@@ -84,7 +83,7 @@ var controller = new Controller();
 var game = new Game();
 // var engine = new Engine(1000 / 30, update);
 
-engine();
+//engine();
 
 ////////////////////
 //// INITIALIZE ////
@@ -92,9 +91,6 @@ engine();
 
 document.addEventListener("keydown", keyDownUp);
 document.addEventListener("keyup", keyDownUp);
-//document.addEventListener("resize", resize);
-
-//engine.start();
 
 // });
 
