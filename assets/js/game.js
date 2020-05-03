@@ -181,44 +181,62 @@ function Game() {
                     var leftTube = parseInt(element.previousElementSibling.style.left);
                     var leftTubeW = element.previousElementSibling.width;
                     var rightTube = parseInt(element.nextElementSibling.style.left);
+                    var tube3 = parseInt(document.querySelector("#tube3").style.left);
+                    var tube3W = document.querySelector("#tube3").width;
+                    var tube4 = parseInt(document.querySelector("#tube4").style.left);
                     var rightTubeW = element.nextElementSibling.width;
 
-                    if (element.previousElementSibling.classList.contains("tube")) {
-                        if (posXG < leftTube + leftTubeW) {
+
+                    if(element.id == "goomba2" || element.id == "goomba3"){
+
+                        if (posXG < tube3 + tube3W) {
                             element.classList.remove("moveLeft")
-                        }
-
-                        if (element.classList.contains("moveLeft")) {
-                            element.style.left = posXG + "px";
-                            posXG--;
-                        } else {
-                            posXG += 2;
-                            element.style.left = posXG + "px";
-                        }
-                    }
-
-                    if (element.nextElementSibling.classList.contains("tube")) {
-                        if (posXG + element.width > rightTube) {
+                        }else if(posXG+element.width > tube4){
                             element.classList.add("moveLeft")
                         }
 
                         if (element.classList.contains("moveLeft")) {
-                            element.style.left = posXG + "px";
                             posXG--;
+                            element.style.left = posXG + "px";
                         } else {
                             posXG += 2;
                             element.style.left = posXG + "px";
                         }
-                    } else if (element.nextElementSibling.nextElementSibling.classList.contains("tube")) {
-                        if (posXG + element.width > parseInt(element.nextElementSibling.nextElementSibling.style.left)) {
-                            element.classList.add("remove")
+
+                    }else{
+                        if (element.previousElementSibling.classList.contains("tube")) {
+                            if (posXG < leftTube + leftTubeW) {
+                                element.classList.remove("moveLeft")
+                            }
+                            if (element.classList.contains("moveLeft")) {
+                                posXG--;
+                                element.style.left = posXG + "px";
+                            } else {
+                                posXG += 2;
+                                element.style.left = posXG + "px";
+                            }
+                        }
+    
+                        if (element.nextElementSibling.classList.contains("tube")) {
+                            if (posXG + element.width > rightTube) {
+                                element.classList.add("moveLeft")
+                            }
+    
+                            if (element.classList.contains("moveLeft")) {
+                                posXG--;
+                                element.style.left = posXG + "px";
+                            } else {
+                                posXG += 2;
+                                element.style.left = posXG + "px";
+                            }
+    
                         }
                     }
 
                     posXG += speed;
                     element.style.left = posXG + "px";
                 }
-            })
+            });
 
             //screenX += worldSpeed;
 
