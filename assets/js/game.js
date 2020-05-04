@@ -346,7 +346,7 @@ function Game() {
             
             solidBlocks.forEach(function(element){
                 if (element.classList.contains("question")) {
-                    element.src = "assets/img/question.png"
+                    element.src = "assets/img/question.gif"
                 }
             })
 
