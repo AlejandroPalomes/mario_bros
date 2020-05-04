@@ -298,7 +298,7 @@ function Game() {
             worldMove = 0;
             worldSpeed = 3;
             coinCount = 0;
-            // document.querySelector(".coinCounter").innerHTML = ('0' + coinCount).slice(-2);
+            document.querySelector(".coinCounter").innerHTML = ('0' + coinCount).slice(-2);
             score = 0;
             document.querySelector("#score").innerHTML = ('00000' + score).slice(-6);
             borderLeft = 0;

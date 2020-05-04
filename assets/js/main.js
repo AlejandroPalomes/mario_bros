@@ -23,6 +23,7 @@ var floorPositions = [];
 var coinsPositionsX = [];
 var coinsPositionsY = [];
 
+var restTime;
 var pause = false;
 
 var windowSize = window.innerWidth;
@@ -98,10 +99,11 @@ function touchRightOut() {
     controller.keyDownUp("keyup", 39);
 };
 
-var restTime = setInterval(() => {
-    time--;
-    document.querySelector("#time").innerHTML = time;
-}, 1000);
+
+// var restTime = setInterval(() => {
+//     time--;
+//     document.querySelector("#time").innerHTML = time;
+// }, 1000);
 
 function update() {
 
@@ -160,6 +162,10 @@ document.querySelector("#start-submit").addEventListener("click", function(){
     if (!alive){
         alive = true;
     }
+    restTime = setInterval(() => {
+        time--;
+        document.querySelector("#time").innerHTML = time;
+    }, 1000);
     engine();
 })
 
