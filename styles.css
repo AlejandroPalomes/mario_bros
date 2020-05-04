@@ -52,7 +52,7 @@ body {
 .login__container{
     height: 600px;
     width: 800px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     justify-content: center;
     align-items: center;
     background-image: url("assets/img/login_BG.jpg");
@@ -200,7 +200,7 @@ input{
 #screen {
     height: 520px;
     width: 800px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     overflow: hidden;
 }
 
@@ -261,6 +261,13 @@ input{
     background-image: url(assets/img/floor-tile.png);
     background-repeat: repeat;
     background-size: 40px;
+}
+
+.floor__section__sky{
+    z-index: -3;
+    /* bottom: 3px; */
+    background: rgb(144, 150, 200);
+    border: 5px solid rgb(144, 150, 200);
 }
 
 .background {
