@@ -13,6 +13,13 @@
     position: absolute;
 }
 
+.relative{
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 body {
     background: black;
     height: 100vh;
@@ -20,6 +27,11 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+    -o-user-select: none;
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+ */
+    -webkit-user-select: none; /* Chrome/Safari */
+    user-select: none;
 }
 
 .resize {

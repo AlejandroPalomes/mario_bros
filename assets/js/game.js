@@ -289,6 +289,7 @@ function Game() {
             document.querySelector("#gameoverScreen").classList.add("hidden");
             document.querySelector(".gameOver").pause();
             document.querySelector("#main-container").style.left = 0;
+            document.querySelector(".login__container").classList.remove("hidden");
             worldMove = 0;
             speedX = 0;
             speedY = 0;
