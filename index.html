@@ -10,208 +10,216 @@
 </head>
 <body class="d-flex">
     <div class="d-flex resize">
-        <div id="gameoverScreen" class="hidden d-flex">
-            <span>game over</span>
-            <button id="restart">try again</button>
-        </div>
-        <div class="d-flex login__container">
-            <div id="login" class="">
-                <div class="d-flex plate">
-                    <div class="title__name">
-                        <div>SUPER WEB</div>
-                        <div>MARIO BROS.</div>
+        <div>
+
+            <div id="gameoverScreen" class="hidden d-flex">
+                <span>game over</span>
+                <button id="restart">try again</button>
+            </div>
+            <div class="d-flex login__container">
+                <div id="login" class="">
+                    <div class="d-flex plate">
+                        <div class="title__name">
+                            <div>SUPER WEB</div>
+                            <div>MARIO BROS.</div>
+                        </div>
                     </div>
+                    <form class="d-flex">
+                        <label for="player">Enter Player Name</label>
+                        <input type="text" name="player" placeholder="enter name" id="player" maxlength="3">
+                        <button class="start__button">Start</button>
+                        <input type="submit" class="hidden" value="Start" id="start-submit">
+                    </form>
+                    <span class="top__score">top - <span id="topScore">000000</span></span>
                 </div>
-                <form class="d-flex">
-                    <label for="player">Enter Player Name</label>
-                    <input type="text" name="player" placeholder="enter name" id="player" maxlength="3">
-                    <button class="start__button">Start</button>
-                    <input type="submit" class="hidden" value="Start" id="start-submit">
-                </form>
-                <span class="top__score">top - <span id="topScore">000000</span></span>
             </div>
-        </div>
-        <!-- <canvas></canvas> -->
-        <div class="d-flex stats hidden">
-            <div class="stats__box d-flex">
-                <span>MARIO</span>
-                <span id="score">000000</span>
-            </div>
-            <div class="stats__box d-flex">
-                <div><img src="assets/img/coinStatic.png" height="30px" width="30px" alt="coin"><span>x<span class="coinCounter">00</span></span></div>
-            </div>
-            <div class="stats__box d-flex">
-                <span>WORLD</span>
-                <span>1-1</span>
-            </div>
-            <div class="stats__box d-flex">
-                <span>TIME</span>
-                <span id="time">400</span>
-            </div>
-        </div>
-        <div id="screen" class="hidden">
-            <div id="main-container">
-                <div class="background">
-                    <!--? CLOUDS ?-->
-                    <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 1098px; bottom: 380px">
-                    <img class="cloud absolute" src="assets/img/cloud3.png" height="70px" width="140px" style="left: 1420px; bottom: 340px">
-                    <img class="cloud absolute" src="assets/img/cloud2-01.png" height="70px" width="125px" style="left: 1775px; bottom: 380px">
-                    <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 2585px; bottom: 340px">
-                    <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 3110px; bottom: 380px">
-                    <img class="cloud absolute" src="assets/img/cloud3.png" height="70px" width="140px" style="left: 3375px; bottom: 340px">
-                    <img class="cloud absolute" src="assets/img/cloud2-01.png" height="70px" width="125px" style="left: 3695px; bottom: 380px">
-                    <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 4500px; bottom: 340px">
-                    <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 49350px; bottom: 380px">
-                    <img class="cloud absolute" src="assets/img/cloud3.png" height="70px" width="140px" style="left: 5260px; bottom: 340px">
-                    <img class="cloud absolute" src="assets/img/cloud2-01.png" height="70px" width="125px" style="left: 5615px; bottom: 380px">
-                    <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 6415px; bottom: 340px">
-                    <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 6855px; bottom: 380px">
-                    <img class="cloud absolute" src="assets/img/cloud3.png" height="70px" width="140px" style="left: 7175px; bottom: 340px">
-                    <img class="cloud absolute" src="assets/img/cloud2-01.png" height="70px" width="125px" style="left: 7545px; bottom: 380px">
-                    <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 8335px; bottom: 340px">
-    
-                    <!--? BUSHES ?-->
-                    <img class="bush absolute" src="assets/img/bush3.png" height="70px" width="140px" style="left: 790px; bottom: -25px">
-                    <img class="bush absolute" src="assets/img/bush1.png" height="50px" width="70px" style="left: 1260px; bottom: -20px">
-                    <img class="bush absolute" src="assets/img/bush2.png" height="70px" width="125px" style="left: 1990px; bottom: -25px">
-                    <img class="bush absolute" src="assets/img/bush3.png" height="70px" width="140px" style="left: 2700px; bottom: -25px">
-                    <img class="bush absolute" src="assets/img/bush1.png" height="50px" width="70px" style="left: 3175px; bottom: -25px">
-                    <img class="bush absolute" src="assets/img/bush2.png" height="70px" width="125px" style="left: 3894px; bottom: -25px">
-                    <img class="bush absolute" src="assets/img/bush3.png" height="70px" width="140px" style="left: 1615px; bottom: -25px">
-                    <img class="bush absolute" src="assets/img/bush1.png" height="50px" width="70px" style="left: 5090px; bottom: -25px">
-                    <img class="bush absolute" src="assets/img/bush2.png" height="70px" width="125px" style="left: 5830px; bottom: -25px">
-                    <img class="bush absolute" src="assets/img/bush1.png" height="50px" width="70px" style="left: 7015px; bottom: -20px">
-    
-                    <!--? COLLIDERS ?-->
-                    <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 960px; bottom: 120px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 1120px; bottom: 120px">
-                    <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 1160px; bottom: 120px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 1200px; bottom: 120px">
-                    <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 1200px; bottom: 280px">
-                    <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 1240px; bottom: 120px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 1280px; bottom: 120px">
-                    <img class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 1290px; bottom: 0px">
-    
-                    <img class="tube absolute" src="assets/img/tube.png" height="85px" width="85px" style="left: 1445px; bottom: -5px">
-                    <img class="tube absolute" src="assets/img/tube2.png" height="120px" width="85px" style="left: 1840px; bottom: -5px">
-                    <img id="goomba1" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 2130px; bottom: 0px">
-                    <img id="tube3" class="tube absolute" src="assets/img/tube3.png" height="160px" width="85px" style="left: 2165px; bottom: -5px">
-                    <img id="goomba2" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 2380px; bottom: 0px">
-                    <img id="goomba3" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 2460px; bottom: 0px">
-                    <img id="tube4" class="tube absolute" src="assets/img/tube3.png" height="160px" width="85px" style="left: 2600px; bottom: -5px">
-    
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3395px; bottom: 120px">
-                    <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 3435px; bottom: 120px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3475px; bottom: 120px">
-    
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3515px; bottom: 280px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3555px; bottom: 280px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3595px; bottom: 280px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3635px; bottom: 280px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3675px; bottom: 280px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3715px; bottom: 280px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3755px; bottom: 280px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3795px; bottom: 280px">
-    
-    
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3955px; bottom: 280px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3995px; bottom: 280px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 4035px; bottom: 280px">
-                    <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 4075px; bottom: 280px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 4075px; bottom: 120px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 4315px; bottom: 120px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 4355px; bottom: 120px">
-                    <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 4555px; bottom: 120px">
-                    <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 4675px; bottom: 120px">
-                    <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 4675px; bottom: 280px">
-                    <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 4795px; bottom: 120px">
-    
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5035px; bottom: 120px">
-    
-    
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5155px; bottom: 280px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5195px; bottom: 280px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5235px; bottom: 280px">
-    
-                    <img id="goomba9" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 5260px; bottom: 0px">
-                    <img id="goomba10" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 5330px; bottom: 0px">
-                    <img id="goomba11" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 5400px; bottom: 0px">
-                    <img id="goomba12" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 5470px; bottom: 0px">
-    
-    
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5435px; bottom: 280px">
-                    <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 5475px; bottom: 280px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5475px; bottom: 120px">
-                    <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 5515px; bottom: 280px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5515px; bottom: 120px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5555px; bottom: 280px">
-    
-                    <img class="pyramid absolute tube" height="40px" width="160px" style="left: 5675px; bottom: -1px">
-                    <img class="pyramid absolute tube" height="40px" width="120px" style="left: 5715px; bottom: 38px">
-                    <img class="pyramid absolute tube" height="40px" width="80px" style="left: 5755px; bottom: 77px">
-                    <img class="pyramid absolute tube" height="40px" width="40px" style="left: 5795px; bottom: 116px">
-                    <img class="pyramid absolute tube" height="40px" width="160px" style="left: 5915px; bottom: -1px">
-                    <img class="pyramid absolute tube" height="40px" width="120px" style="left: 5915px; bottom: 38px">
-                    <img class="pyramid absolute tube" height="40px" width="80px" style="left: 5915px; bottom: 77px">
-                    <img class="pyramid absolute tube" height="40px" width="40px" style="left: 5915px; bottom: 116px">
-    
-                    <img class="pyramid absolute tube" height="40px" width="200px" style="left: 6240px; bottom: -1px">
-                    <img class="pyramid absolute tube" height="40px" width="160px" style="left: 6280px; bottom: 38px">
-                    <img class="pyramid absolute tube" height="40px" width="120px" style="left: 6320px; bottom: 77px">
-                    <img class="pyramid absolute tube" height="40px" width="80px" style="left: 6360px; bottom: 116px">
-                    <img class="pyramid absolute tube" height="40px" width="160px" style="left: 6520px; bottom: -1px">
-                    <img class="pyramid absolute tube" height="40px" width="120px" style="left: 6520px; bottom: 38px">
-                    <img class="pyramid absolute tube" height="40px" width="80px" style="left: 6520px; bottom: 77px">
-                    <img class="pyramid absolute tube" height="40px" width="40px" style="left: 6520px; bottom: 116px">
-    
-                    <img id="tube5" class="tube absolute" src="assets/img/tube.png" height="85px" width="85px" style="left: 6835px; bottom: -5px">
-    
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 7035px; bottom: 120px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 7075px; bottom: 120px">
-                    <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 7115px; bottom: 120px">
-                    <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 7155px; bottom: 120px">
-    
-                    <img id="goomba13" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 7260px; bottom: 0px">
-                    <img id="goomba14" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 7325px; bottom: 0px">
-    
-                    <img id="tube6" class="tube absolute" src="assets/img/tube.png" height="85px" width="85px" style="left: 7475px; bottom: -5px">
-    
-                    <img class="pyramid absolute tube" height="40px" width="360px" style="left: 7555px; bottom: -1px">
-                    <img class="pyramid absolute tube" height="40px" width="320px" style="left: 7595px; bottom: 38px">
-                    <img class="pyramid absolute tube" height="40px" width="280px" style="left: 7635px; bottom: 77px">
-                    <img class="pyramid absolute tube" height="40px" width="240px" style="left: 7675px; bottom: 116px">
-                    <img class="pyramid absolute tube" height="40px" width="200px" style="left: 7715px; bottom: 155px">
-                    <img class="pyramid absolute tube" height="40px" width="160px" style="left: 7755px; bottom: 194px">
-                    <img class="pyramid absolute tube" height="40px" width="120px" style="left: 7795px; bottom: 233px">
-                    <img class="pyramid absolute tube" height="40px" width="80px" style="left: 7835px; bottom: 272px">
-    
-                    <img class="coin absolute" src="assets/img/coin.gif" height="30px" width="30px" style="left: 1250px; bottom: 170px">
-                    <img class="coin absolute" src="assets/img/coin.gif" height="30px" width="30px" style="left: 1140px; bottom: 170px">
-                    <img class="coin absolute" src="assets/img/coin.gif" height="30px" width="30px" style="left: 1200px; bottom: 170px">
-    
+            <!-- <canvas></canvas> -->
+            <div class="d-flex stats hidden">
+                <div class="stats__box d-flex">
+                    <span>MARIO</span>
+                    <span id="score">000000</span>
                 </div>
-                <img class="mario" src="assets/img/mario-stand-01.png" height="50px" width="50px">
-                <audio class="sounds" src="assets/sound/jump.mp3"></audio>
-                <audio class="kill" src="assets/sound/kick.mp3"></audio>
-                <audio class="coinSound" src="assets/sound/coin.wav"></audio>
-                <audio class="theme" src="assets/sound/theme.mp3"></audio>
-                <audio class="dead" src="assets/sound/dead.mp4"></audio>
-                <audio class="gameOver" src="assets/sound/game-over.mp3"></audio>
+                <div class="stats__box d-flex">
+                    <div><img src="assets/img/coinStatic.png" height="30px" width="30px" alt="coin"><span>x<span class="coinCounter">00</span></span></div>
+                </div>
+                <div class="stats__box d-flex">
+                    <span>WORLD</span>
+                    <span>1-1</span>
+                </div>
+                <div class="stats__box d-flex">
+                    <span>TIME</span>
+                    <span id="time">400</span>
+                </div>
             </div>
+            <div id="screen" class="hidden">
+                <div id="main-container">
+                    <div class="background">
+                        <!--? CLOUDS ?-->
+                        <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 1098px; bottom: 380px">
+                        <img class="cloud absolute" src="assets/img/cloud3.png" height="70px" width="140px" style="left: 1420px; bottom: 340px">
+                        <img class="cloud absolute" src="assets/img/cloud2-01.png" height="70px" width="125px" style="left: 1775px; bottom: 380px">
+                        <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 2585px; bottom: 340px">
+                        <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 3110px; bottom: 380px">
+                        <img class="cloud absolute" src="assets/img/cloud3.png" height="70px" width="140px" style="left: 3375px; bottom: 340px">
+                        <img class="cloud absolute" src="assets/img/cloud2-01.png" height="70px" width="125px" style="left: 3695px; bottom: 380px">
+                        <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 4500px; bottom: 340px">
+                        <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 49350px; bottom: 380px">
+                        <img class="cloud absolute" src="assets/img/cloud3.png" height="70px" width="140px" style="left: 5260px; bottom: 340px">
+                        <img class="cloud absolute" src="assets/img/cloud2-01.png" height="70px" width="125px" style="left: 5615px; bottom: 380px">
+                        <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 6415px; bottom: 340px">
+                        <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 6855px; bottom: 380px">
+                        <img class="cloud absolute" src="assets/img/cloud3.png" height="70px" width="140px" style="left: 7175px; bottom: 340px">
+                        <img class="cloud absolute" src="assets/img/cloud2-01.png" height="70px" width="125px" style="left: 7545px; bottom: 380px">
+                        <img class="cloud absolute" src="assets/img/cloud1-02.png" height="50px" width="70px" style="left: 8335px; bottom: 340px">
+        
+                        <!--? BUSHES ?-->
+                        <img class="bush absolute" src="assets/img/bush3.png" height="70px" width="140px" style="left: 790px; bottom: -25px">
+                        <img class="bush absolute" src="assets/img/bush1.png" height="50px" width="70px" style="left: 1260px; bottom: -20px">
+                        <img class="bush absolute" src="assets/img/bush2.png" height="70px" width="125px" style="left: 1990px; bottom: -25px">
+                        <img class="bush absolute" src="assets/img/bush3.png" height="70px" width="140px" style="left: 2700px; bottom: -25px">
+                        <img class="bush absolute" src="assets/img/bush1.png" height="50px" width="70px" style="left: 3175px; bottom: -25px">
+                        <img class="bush absolute" src="assets/img/bush2.png" height="70px" width="125px" style="left: 3894px; bottom: -25px">
+                        <img class="bush absolute" src="assets/img/bush3.png" height="70px" width="140px" style="left: 1615px; bottom: -25px">
+                        <img class="bush absolute" src="assets/img/bush1.png" height="50px" width="70px" style="left: 5090px; bottom: -25px">
+                        <img class="bush absolute" src="assets/img/bush2.png" height="70px" width="125px" style="left: 5830px; bottom: -25px">
+                        <img class="bush absolute" src="assets/img/bush1.png" height="50px" width="70px" style="left: 7015px; bottom: -20px">
+        
+                        <!--? COLLIDERS ?-->
+                        <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 960px; bottom: 120px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 1120px; bottom: 120px">
+                        <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 1160px; bottom: 120px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 1200px; bottom: 120px">
+                        <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 1200px; bottom: 280px">
+                        <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 1240px; bottom: 120px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 1280px; bottom: 120px">
+                        <img class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 1290px; bottom: 0px">
+        
+                        <img class="tube absolute" src="assets/img/tube.png" height="85px" width="85px" style="left: 1445px; bottom: -5px">
+                        <img class="tube absolute" src="assets/img/tube2.png" height="120px" width="85px" style="left: 1840px; bottom: -5px">
+                        <img id="goomba1" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 2130px; bottom: 0px">
+                        <img id="tube3" class="tube absolute" src="assets/img/tube3.png" height="160px" width="85px" style="left: 2165px; bottom: -5px">
+                        <img id="goomba2" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 2380px; bottom: 0px">
+                        <img id="goomba3" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 2460px; bottom: 0px">
+                        <img id="tube4" class="tube absolute" src="assets/img/tube3.png" height="160px" width="85px" style="left: 2600px; bottom: -5px">
+        
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3395px; bottom: 120px">
+                        <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 3435px; bottom: 120px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3475px; bottom: 120px">
+        
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3515px; bottom: 280px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3555px; bottom: 280px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3595px; bottom: 280px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3635px; bottom: 280px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3675px; bottom: 280px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3715px; bottom: 280px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3755px; bottom: 280px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3795px; bottom: 280px">
+        
+        
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3955px; bottom: 280px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 3995px; bottom: 280px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 4035px; bottom: 280px">
+                        <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 4075px; bottom: 280px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 4075px; bottom: 120px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 4315px; bottom: 120px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 4355px; bottom: 120px">
+                        <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 4555px; bottom: 120px">
+                        <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 4675px; bottom: 120px">
+                        <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 4675px; bottom: 280px">
+                        <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 4795px; bottom: 120px">
+        
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5035px; bottom: 120px">
+        
+        
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5155px; bottom: 280px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5195px; bottom: 280px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5235px; bottom: 280px">
+        
+                        <img id="goomba9" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 5260px; bottom: 0px">
+                        <img id="goomba10" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 5330px; bottom: 0px">
+                        <img id="goomba11" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 5400px; bottom: 0px">
+                        <img id="goomba12" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 5470px; bottom: 0px">
+        
+        
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5435px; bottom: 280px">
+                        <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 5475px; bottom: 280px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5475px; bottom: 120px">
+                        <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 5515px; bottom: 280px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5515px; bottom: 120px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 5555px; bottom: 280px">
+        
+                        <img class="pyramid absolute tube" height="40px" width="160px" style="left: 5675px; bottom: -1px">
+                        <img class="pyramid absolute tube" height="40px" width="120px" style="left: 5715px; bottom: 38px">
+                        <img class="pyramid absolute tube" height="40px" width="80px" style="left: 5755px; bottom: 77px">
+                        <img class="pyramid absolute tube" height="40px" width="40px" style="left: 5795px; bottom: 116px">
+                        <img class="pyramid absolute tube" height="40px" width="160px" style="left: 5915px; bottom: -1px">
+                        <img class="pyramid absolute tube" height="40px" width="120px" style="left: 5915px; bottom: 38px">
+                        <img class="pyramid absolute tube" height="40px" width="80px" style="left: 5915px; bottom: 77px">
+                        <img class="pyramid absolute tube" height="40px" width="40px" style="left: 5915px; bottom: 116px">
+        
+                        <img class="pyramid absolute tube" height="40px" width="200px" style="left: 6240px; bottom: -1px">
+                        <img class="pyramid absolute tube" height="40px" width="160px" style="left: 6280px; bottom: 38px">
+                        <img class="pyramid absolute tube" height="40px" width="120px" style="left: 6320px; bottom: 77px">
+                        <img class="pyramid absolute tube" height="40px" width="80px" style="left: 6360px; bottom: 116px">
+                        <img class="pyramid absolute tube" height="40px" width="160px" style="left: 6520px; bottom: -1px">
+                        <img class="pyramid absolute tube" height="40px" width="120px" style="left: 6520px; bottom: 38px">
+                        <img class="pyramid absolute tube" height="40px" width="80px" style="left: 6520px; bottom: 77px">
+                        <img class="pyramid absolute tube" height="40px" width="40px" style="left: 6520px; bottom: 116px">
+        
+                        <img id="tube5" class="tube absolute" src="assets/img/tube.png" height="85px" width="85px" style="left: 6835px; bottom: -5px">
+        
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 7035px; bottom: 120px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 7075px; bottom: 120px">
+                        <img class="question absolute collider" src="assets/img/question.png" height="40px" width="40px" style="left: 7115px; bottom: 120px">
+                        <img class="brick absolute collider" src="assets/img/brick.png" height="40px" width="40px" style="left: 7155px; bottom: 120px">
+        
+                        <img id="goomba13" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 7260px; bottom: 0px">
+                        <img id="goomba14" class="goomba absolute alive moveLeft" src="assets/img/goomba1.png" height="50px" width="50px" style="left: 7325px; bottom: 0px">
+        
+                        <img id="tube6" class="tube absolute" src="assets/img/tube.png" height="85px" width="85px" style="left: 7475px; bottom: -5px">
+        
+                        <img class="pyramid absolute tube" height="40px" width="360px" style="left: 7555px; bottom: -1px">
+                        <img class="pyramid absolute tube" height="40px" width="320px" style="left: 7595px; bottom: 38px">
+                        <img class="pyramid absolute tube" height="40px" width="280px" style="left: 7635px; bottom: 77px">
+                        <img class="pyramid absolute tube" height="40px" width="240px" style="left: 7675px; bottom: 116px">
+                        <img class="pyramid absolute tube" height="40px" width="200px" style="left: 7715px; bottom: 155px">
+                        <img class="pyramid absolute tube" height="40px" width="160px" style="left: 7755px; bottom: 194px">
+                        <img class="pyramid absolute tube" height="40px" width="120px" style="left: 7795px; bottom: 233px">
+                        <img class="pyramid absolute tube" height="40px" width="80px" style="left: 7835px; bottom: 272px">
+        
+                        <img class="coin absolute" src="assets/img/coin.gif" height="30px" width="30px" style="left: 1250px; bottom: 170px">
+                        <img class="coin absolute" src="assets/img/coin.gif" height="30px" width="30px" style="left: 1140px; bottom: 170px">
+                        <img class="coin absolute" src="assets/img/coin.gif" height="30px" width="30px" style="left: 1200px; bottom: 170px">
+        
+                    </div>
+                    <img class="mario" src="assets/img/mario-stand-01.png" height="50px" width="50px">
+                    <audio class="sounds" src="assets/sound/jump.mp3"></audio>
+                    <audio class="kill" src="assets/sound/kick.mp3"></audio>
+                    <audio class="coinSound" src="assets/sound/coin.wav"></audio>
+                    <audio class="theme" src="assets/sound/theme.mp3"></audio>
+                    <audio class="dead" src="assets/sound/dead.mp4"></audio>
+                    <audio class="gameOver" src="assets/sound/game-over.mp3"></audio>
+                </div>
+            </div>
+            <div id="floor" class="hidden">
+                <img class="floor__section absolute" height="80px" width="3080px" style="left: 0">
+                <img class="floor__section absolute" height="80px" width="600px" style="left: 3160px">
+                <img class="floor__section absolute" height="80px" width="2560px" style="left: 3880px">
+                <img class="floor__section absolute" height="80px" width="2480px" style="left: 6520px">
+            </div>
+            <!-- <script src="assets/js/script.js"></script> -->
         </div>
-        <div id="floor" class="hidden">
-            <img class="floor__section absolute" height="80px" width="3080px" style="left: 0">
-            <img class="floor__section absolute" height="80px" width="600px" style="left: 3160px">
-            <img class="floor__section absolute" height="80px" width="2560px" style="left: 3880px">
-            <img class="floor__section absolute" height="80px" width="2480px" style="left: 6520px">
+        <div id="touchControls" class="hidden">
+            <button id="touchLeft" class="touchBtn"></button>
+            <button id="touchUp" class="touchBtn"></button>
+            <button id="touchRight" class="touchBtn"></button>
         </div>
-        <script src="assets/js/display.js"></script>
-        <script src="assets/js/controller.js"></script>
-        <script src="assets/js/user.js"></script>
-        <script src="assets/js/game.js"></script>
-        <script src="assets/js/engine.js"></script>
-        <script src="assets/js/main.js"></script>
-        <!-- <script src="assets/js/script.js"></script> -->
     </div>
+    <script src="assets/js/display.js"></script>
+    <script src="assets/js/controller.js"></script>
+    <script src="assets/js/user.js"></script>
+    <script src="assets/js/game.js"></script>
+    <script src="assets/js/engine.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>

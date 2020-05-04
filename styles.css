@@ -27,7 +27,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 /* @media (max-width: 800px) {
@@ -304,4 +304,28 @@ input{
 .dispel{
     opacity: 0;
     transition: opacity 3s;
+}
+
+#touchControls{
+    width: 600px;
+}
+
+.touchBtn{
+    /* border: 2px solid white; */
+    border-radius: 3px;
+    background: rgba(0,0,0,0);
+    height: 300px;
+}
+
+#touchUp{
+    width: 345px;
+    background: red;
+}
+#touchLeft{
+    width: 120px;
+    background: blue;
+}
+#touchRight{
+    width: 120px;
+    background: yellow;
 }

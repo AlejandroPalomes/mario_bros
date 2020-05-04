@@ -3,8 +3,14 @@ function display(){
 
     if (windowSize < 800){
         resizeContainer.style.transform = "scale(" + windowSize/800 +")";
+        if (windowSize < 500){
+            document.querySelector("#touchControls").classList.remove("hidden");
+        }else{
+            document.querySelector("#touchControls").classList.add("hidden");
+        }
     }else {
         resizeContainer.style.transform = "scale(1)";
     }
+
 
 }
