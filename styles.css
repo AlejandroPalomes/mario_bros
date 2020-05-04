@@ -27,11 +27,11 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    -o-user-select: none;
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+ */
-    -webkit-user-select: none; /* Chrome/Safari */
-    user-select: none;
+    /* -o-user-select: none;
+    -moz-user-select: none; /* Firefox
+    -ms-user-select: none; /* IE10+ 
+    -webkit-user-select: none; /* Chrome/Safari 
+    user-select: none; */
     /* touch-action: manipulation; disable double touch zoom */
 }
 
