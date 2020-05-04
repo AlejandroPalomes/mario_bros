@@ -437,7 +437,7 @@ function win(){
     });
 
     mario.addEventListener("animationend", function(){
-        mario.style.bottom = 0 +"px";
+        mario.style.bottom = -8 +"px";
         mario.style.left = 8500 +"px";
         document.querySelector(".stats").classList.add("dispel");
         document.querySelector("#screen").classList.add("dispel");
