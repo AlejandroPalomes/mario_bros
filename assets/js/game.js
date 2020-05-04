@@ -280,6 +280,25 @@ function Game() {
 
             checkTime();
 
+        },
+
+        restart: function(){
+            document.querySelector(".stats").classList.remove("dispel");
+            document.querySelector("#screen").classList.remove("dispel");
+            document.querySelector("#floor").classList.remove("dispel");
+            document.querySelector("#gameoverScreen").classList.add("hidden");
+            document.querySelector(".gameOver").pause();
+            document.querySelector("#main-container").style.left = 0;
+            worldMove = 0;
+            speedX = 0;
+            speedY = 0;
+            posX = 0;
+            posY = 0;
+            jumping = false;
+            falling = false;
+            posXe = 0;
+            posYe = 0;
+        
         }
 
     };
@@ -289,6 +308,10 @@ function Game() {
         this.world.update();
 
     };
+
+    this.restart = function(){
+        this.world.restart();
+    }
 
 };
 
@@ -319,6 +342,7 @@ function dead() {
     mario.addEventListener("animationend", function(){
         console.log("animationend in mario")
         mario.classList.add("hidden");
+        document.querySelector(".gameOver").currentTime = 0;
         document.querySelector(".gameOver").play();
         document.querySelector(".stats").classList.add("dispel");
         document.querySelector("#screen").classList.add("dispel");
@@ -330,7 +354,7 @@ function dead() {
         document.querySelector("#screen").classList.add("hidden");
         document.querySelector("#floor").classList.add("hidden");
         document.querySelector("#gameoverScreen").classList.remove("hidden");
-        document.querySelector("#gameoverScreen").classList.add("appear");
+        // document.querySelector("#gameoverScreen").classList.add("appear");
     });
 
 }

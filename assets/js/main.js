@@ -96,6 +96,9 @@ display();
 document.addEventListener("keydown", keyDownUp);
 document.addEventListener("keyup", keyDownUp);
 document.querySelector(".start__button").addEventListener("click", checkUsername);
+document.querySelector("#restart").addEventListener("click", function(){
+    game.restart()
+});
 
 document.querySelector("#start-submit").addEventListener("click", function(){
 
