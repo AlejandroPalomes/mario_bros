@@ -53,13 +53,23 @@ function keyDownUp(event) {
     controller.keyDownUp(event.type, event.keyCode);
 };
 function touchLeft() {
-    controller.keyDownUp("a", 37);
+    controller.keyDownUp("keydown", 37);
 };
 function touchUp() {
-    controller.keyDownUp("w", 38);
+    controller.keyDownUp("keydown", 38);
 };
 function touchRight() {
-    controller.keyDownUp("d", 39);
+    controller.keyDownUp("keydown", 39);
+};
+function touchLeftOut() {
+    console.log("touchLeft Works")
+    controller.keyDownUp("keyup", 37);
+};
+function touchUpOut() {
+    controller.keyDownUp("keyup", 38);
+};
+function touchRightOut() {
+    controller.keyDownUp("keyup", 39);
 };
 
 var restTime = setInterval(() => {
@@ -107,6 +117,9 @@ document.addEventListener("keyup", keyDownUp);
 document.querySelector("#touchLeft").addEventListener("touchstart", touchLeft);
 document.querySelector("#touchUp").addEventListener("touchstart", touchUp);
 document.querySelector("#touchRight").addEventListener("touchstart", touchRight);
+document.querySelector("#touchLeft").addEventListener("touchend", touchLeftOut);
+document.querySelector("#touchUp").addEventListener("touchend", touchUpOut);
+document.querySelector("#touchRight").addEventListener("touchend", touchRightOut);
 document.querySelector(".start__button").addEventListener("click", checkUsername);
 document.querySelector("#restart").addEventListener("click", function(){
     game.restart()
