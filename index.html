@@ -17,9 +17,23 @@
             </div>
             <div id="winScreen" class="hidden d-flex">
                 <span>you won</span>
+                <div class="two__columns d-flex">
+                    <div id="results" class="d-flex">
+                        <span>total coins - <span id="currentCoins">03</span></span>
+                        <span>total time - <span id="currentTime">555</span></span>
+                        <span>total score - <span id="currentScore">500</span></span>
+                        <span>total <span id="currentResult"></span></span>
+                    </div>
+                    <div id="ranking">
+                        <span>Leaderboard (top 3)</span>
+                        <ul id="topUsers">
+                        </ul>
+                    </div>
+
+                </div>
                 <button id="restart2">try again</button>
             </div>
-            <div class="d-flex login__container">
+            <div class="d-flex login__container"> <!--!remoeve hidden -->
                 <div id="login" class="">
                     <div class="d-flex plate">
                         <div class="title__name">

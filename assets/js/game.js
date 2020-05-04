@@ -194,9 +194,9 @@ function Game() {
                     var tube3 = parseInt(document.querySelector("#tube3").style.left);
                     var tube3W = document.querySelector("#tube3").width;
                     var tube4 = parseInt(document.querySelector("#tube4").style.left);
-                    var tube5 = parseInt(document.querySelector("#tube3").style.left);
+                    var tube5 = parseInt(document.querySelector("#tube5").style.left);
                     var tube5W = document.querySelector("#tube3").width;
-                    var tube6 = parseInt(document.querySelector("#tube4").style.left);
+                    var tube6 = parseInt(document.querySelector("#tube6").style.left);
                     //var rightTubeW = element.nextElementSibling.width;
 
 
@@ -290,6 +290,7 @@ function Game() {
             document.querySelector("#screen").classList.remove("dispel");
             document.querySelector("#floor").classList.remove("dispel");
             document.querySelector("#gameoverScreen").classList.add("hidden");
+            document.querySelector("#winScreen").classList.add("hidden");
             document.querySelector(".gameOver").pause();
             document.querySelector("#main-container").style.left = 0;
             document.querySelector(".login__container").classList.remove("hidden");
@@ -411,6 +412,7 @@ function dead() {
 }
 
 function win(){
+    clearTimeout(restTime)
     currentUser.score = score;
     var currentMax = currentUser.getMaxScore();
     if (currentMax > maxScore){
@@ -418,6 +420,13 @@ function win(){
         topScore.innerHTML = ('00000' + maxScore).slice(-6);
         topUser.innerHTML = currentUser.name;
     }
+    if(winners.includes(currentUser.name)){
+        //saveScore(currentMax);
+    }else{
+        winners.push(currentUser.name);
+        //addToScores(currentMax);
+    }
+    // document.querySelector()
     alive = false;
     document.querySelector(".theme").pause();
     document.querySelector(".win").currentTime = 0;
@@ -434,6 +443,17 @@ function win(){
         document.querySelector("#screen").classList.add("dispel");
         document.querySelector("#floor").classList.add("dispel");
     });
+
+    var rCoins = document.querySelector("#currentCoins");
+    var rTime = document.querySelector("#currentTime");
+    var rScore = document.querySelector("#currentScore");
+    var rResult = document.querySelector("#currentResult");
+
+    rCoins.innerHTML = coinCount;
+    rTime.innerHTML = time;
+    rScore.innerHTML = score;
+    rResult.innerHTML = obtainResult();
+
     document.querySelector(".stats").addEventListener("transitionend", function(){
         document.querySelector(".stats").classList.add("hidden");
         document.querySelector("#screen").classList.add("hidden");
@@ -442,11 +462,44 @@ function win(){
         // document.querySelector("#gameoverScreen").classList.add("appear");
     });
     
-    // mario.classList.add("marioWin");
-    // users.forEach(function(element){
-    //     element.push(currentUser);
-    // })
 }
+
+function obtainResult(){
+    return coinCount + time + score;
+}
+
+
+// function addToScores(currentMaxx) {
+//     usersScores = document.querySelector("#topUsers")
+//     var liUsername = document.createElement("li");
+//     liUsername.innerText = currentUser + " - " + currentMaxx;
+//     liUsername.setAttribute("id", currentUser.name);
+//     usersScores.appendChild(liUsername);
+//     saveScore(currentMaxx);
+// }
+
+// function saveScore(currentMaxx) {
+//     var userLi = document.querySelector(`#${currentUser}`);
+//     console.log(document.querySelector(`#${username}`));
+//     if (currentUserScore.innerHTML == "Currently playing") {
+//         users.forEach(element => {
+//             if (element.name == username) {
+//                 if (element.maxScore < clicks) {
+//                     element.maxScore = clicks;
+//                 }
+//                 for (let i = 1; i < users.length; i++) {
+//                     userLi = document.querySelector(`#${username}`);
+//                     currentUserScore = document.querySelector(`#${username}Score`);
+//                     if (currentUser.previousSibling.innerHTML < element.maxScore) {
+//                         document.querySelector(".users__scores").insertBefore(currentUserScore, userLi.previousSibling.previousSibling);
+//                         document.querySelector(".users__scores").insertBefore(userLi, currentUserScore);
+//                     };
+//                 }
+//                 currentUserScore.innerHTML = element.maxScore;
+//             }
+//         })
+//     }
+// }
 
 Game.prototype = {
     constructor: Game

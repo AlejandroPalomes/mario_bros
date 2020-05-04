@@ -17,6 +17,7 @@ var score = 0;
 var currentUser = undefined;
 var users = [];
 var usersName = [];
+var winners = [];
 var time = 400;
 var floor = document.querySelectorAll(".floor__section");
 var goombaPositions = [];

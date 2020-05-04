@@ -287,7 +287,7 @@ input{
     100% {transform: translateY(200px);}
 }
 
-#gameoverScreen{
+#gameoverScreen, #winScreen{
     width: 800px;
     height: 600px;
     color: white;
@@ -297,7 +297,7 @@ input{
     align-items: center;
 }
 
-#restart{
+#restart, #restart2{
     font-size: 30px;
     margin-top: 30px;
     height: 80px;
@@ -309,9 +309,34 @@ input{
     color: white;
 }
 
-#restart:hover{
+#restart:hover, #restart2:hover{
     cursor: pointer;
     background: rgb(43, 43, 43);
+}
+
+#results, #ranking{
+    flex-direction: column;
+    font-size: 16px;
+    width: 320px;
+}
+
+#ranking {
+    height: 95px;
+    overflow: hidden;
+}
+
+#results span, #ranking *{
+    margin-top: 10px;
+    list-style: none;
+}
+#results span:nth-child(4){
+    font-size: 25px;
+}
+
+.two__columns{
+    width: 800px;
+    margin: 40px 0;
+    justify-content: space-evenly;
 }
 
 .dispel{
