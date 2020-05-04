@@ -42,6 +42,10 @@ function Game() {
                     jumping = false;
                     falling = false;
                 }
+
+                if(posX+mario.width > 8255){
+                    win();
+                }
             }
 
 
@@ -266,7 +270,6 @@ function Game() {
 
             //screenX += worldSpeed;
 
-            console.log(worldSpeed);
             worldMove -= worldSpeed;
             document.querySelector("#main-container").style.left = worldMove + "px";
 
@@ -339,6 +342,12 @@ function Game() {
                 element.classList.remove("hidden");
                 index++
             })
+            
+            solidBlocks.forEach(function(element){
+                if (element.classList.contains("question")) {
+                    element.src = "assets/img/question.png"
+                }
+            })
 
         
         }
@@ -402,14 +411,41 @@ function dead() {
 }
 
 function win(){
-    if (score > maxScore){
-        maxScore = score;
-        topScore = ('00000' + score).slice(-6);
+    currentUser.score = score;
+    var currentMax = currentUser.getMaxScore();
+    if (currentMax > maxScore){
+        maxScore = currentMax;
+        topScore.innerHTML = ('00000' + maxScore).slice(-6);
+        topUser.innerHTML = currentUser.name;
     }
-    mario.classList.add("marioWin");
-    users.forEach(function(element){
-        element.push(currentUser);
-    })
+    alive = false;
+    document.querySelector(".theme").pause();
+    document.querySelector(".win").currentTime = 0;
+    document.querySelector(".win").play();
+    mario.classList.add("mario__win");
+    var standMario = setTimeout(function(){
+        mario.src = "assets/img/mario-stand-02.png";
+    });
+
+    mario.addEventListener("animationend", function(){
+        mario.style.bottom = 0 +"px";
+        mario.style.left = 8500 +"px";
+        document.querySelector(".stats").classList.add("dispel");
+        document.querySelector("#screen").classList.add("dispel");
+        document.querySelector("#floor").classList.add("dispel");
+    });
+    document.querySelector(".stats").addEventListener("transitionend", function(){
+        document.querySelector(".stats").classList.add("hidden");
+        document.querySelector("#screen").classList.add("hidden");
+        document.querySelector("#floor").classList.add("hidden");
+        document.querySelector("#winScreen").classList.remove("hidden");
+        // document.querySelector("#gameoverScreen").classList.add("appear");
+    });
+    
+    // mario.classList.add("marioWin");
+    // users.forEach(function(element){
+    //     element.push(currentUser);
+    // })
 }
 
 Game.prototype = {

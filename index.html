@@ -15,6 +15,10 @@
                 <span>game over</span>
                 <button id="restart">try again</button>
             </div>
+            <div id="winScreen" class="hidden d-flex">
+                <span>you won</span>
+                <button id="restart2">try again</button>
+            </div>
             <div class="d-flex login__container">
                 <div id="login" class="">
                     <div class="d-flex plate">
@@ -29,7 +33,7 @@
                         <button class="start__button">Start</button>
                         <input type="submit" class="hidden" value="Start" id="start-submit">
                     </form>
-                    <span class="top__score">top - <span id="topScore">000000</span></span>
+                    <span class="top__score"><span id="topUser">top</span> - <span id="topScore">000000</span></span>
                 </div>
             </div>
             <!-- <canvas></canvas> -->
@@ -198,6 +202,7 @@
                     <audio class="theme" src="assets/sound/theme.mp3"></audio>
                     <audio class="dead" src="assets/sound/dead.mp4"></audio>
                     <audio class="gameOver" src="assets/sound/game-over.mp3"></audio>
+                    <audio class="win" src="assets/sound/win.mp4"></audio>
                 </div>
             </div>
             <div id="floor" class="hidden">

@@ -1,6 +1,7 @@
 var mario = document.querySelector(".mario");
 var goomba = document.querySelectorAll(".goomba");
-var topScore = document.querySelector("#topScore").innerHTML;
+var topScore = document.querySelector("#topScore");
+var topUser = document.querySelector("#topUser");
 var screen = document.querySelector("#main-container");
 var screenX = parseInt(getComputedStyle(screen).width);
 var speedX = 0;
@@ -22,6 +23,7 @@ var goombaPositions = [];
 var floorPositions = [];
 var coinsPositionsX = [];
 var coinsPositionsY = [];
+var maxScore = 0;
 
 var restTime;
 var pause = false;
@@ -73,7 +75,7 @@ coins.forEach(function(element){
 
 
 /////////////////
-//// CONTROLS ///
+////! CONTROLS ///
 /////////////////
 
 
@@ -126,17 +128,20 @@ function update() {
 
 
 /////////////////
-//// OBJECTS ////
+////! OBJECTS ////
 /////////////////
 
 var controller = new Controller();
 var game = new Game();
 
 ////////////////////
-//// INITIALIZE ////
+////! INITIALIZE ////
 ////////////////////0
-// engine();
 display();
+
+////////////////////
+//////! INPUTS !//////
+////////////////////0
 document.addEventListener("keydown", keyDownUp);
 document.addEventListener("keyup", keyDownUp);
 document.querySelector("#touchLeft").addEventListener("touchstart", touchLeft);
@@ -148,6 +153,9 @@ document.querySelector("#touchRight").addEventListener("touchend", touchRightOut
 document.querySelector(".start__button").addEventListener("click", checkUsername);
 
 document.querySelector("#restart").addEventListener("click", function(){
+    game.world.restart()
+});
+document.querySelector("#restart2").addEventListener("click", function(){
     game.world.restart()
 });
 
@@ -166,6 +174,9 @@ document.querySelector("#start-submit").addEventListener("click", function(){
         time--;
         document.querySelector("#time").innerHTML = time;
     }, 1000);
+    document.querySelector(".theme").currentTime = 0;
+    document.querySelector(".theme").play();
+    document.querySelector(".theme").loop = true;
     engine();
 })
 

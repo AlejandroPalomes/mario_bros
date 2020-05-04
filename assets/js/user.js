@@ -7,5 +7,6 @@ function User(name){
         if(this.score > this.maxScore){
             this.maxScore = this.score;
         }
+        return this.maxScore;
     }
 }
