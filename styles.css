@@ -358,10 +358,10 @@ input{
 @keyframes winMove {
     0% {left: 8255px;}
     20% {left: 8255px;}
-    40% {bottom: -8; left: 8255px;}
-    50% {bottom: -8; left: 8255px;}
-    90% {bottom: -8; left: 8500px;}
-    100% {bottom: -8; left: 8500px;}
+    40% {bottom: -8px; left: 8255px;}
+    50% {bottom: -8px; left: 8255px;}
+    90% {bottom: -8px; left: 8500px;}
+    100% {bottom: -8px; left: 8500px;}
 }
 
 #touchControls{

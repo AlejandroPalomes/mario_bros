@@ -424,7 +424,7 @@ function win(){
         //saveScore(currentMax);
     }else{
         winners.push(currentUser.name);
-        //addToScores(currentMax);
+        addToScores(currentMax);
     }
     // document.querySelector()
     alive = false;
@@ -469,17 +469,17 @@ function obtainResult(){
 }
 
 
-// function addToScores(currentMaxx) {
-//     usersScores = document.querySelector("#topUsers")
-//     var liUsername = document.createElement("li");
-//     liUsername.innerText = currentUser + " - " + currentMaxx;
-//     liUsername.setAttribute("id", currentUser.name);
-//     usersScores.appendChild(liUsername);
-//     saveScore(currentMaxx);
-// }
+function addToScores(currentMaxx) {
+    usersScores = document.querySelector("#topUsers")
+    var liUsername = document.createElement("li");
+    liUsername.innerText = currentUser.name + " - " + currentMaxx;
+    liUsername.setAttribute("id", currentUser.name);
+    usersScores.appendChild(liUsername);
+    //saveScore(currentMaxx);
+}
 
 // function saveScore(currentMaxx) {
-//     var userLi = document.querySelector(`#${currentUser}`);
+//     var userLi = document.querySelector(`#${currentUser.name}`);
 //     console.log(document.querySelector(`#${username}`));
 //     if (currentUserScore.innerHTML == "Currently playing") {
 //         users.forEach(element => {
