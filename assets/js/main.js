@@ -89,7 +89,7 @@ function update() {
         jump();
     }
     if(alive){
-        game.update();
+        game.world.update();
     }
 
     //display()
@@ -122,7 +122,7 @@ document.querySelector("#touchUp").addEventListener("touchend", touchUpOut);
 document.querySelector("#touchRight").addEventListener("touchend", touchRightOut);
 document.querySelector(".start__button").addEventListener("click", checkUsername);
 document.querySelector("#restart").addEventListener("click", function(){
-    game.restart()
+    game.world.restart()
 });
 
 document.querySelector("#start-submit").addEventListener("click", function(){

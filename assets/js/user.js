@@ -4,8 +4,8 @@ function User(name){
     this.maxScore = 0;
 
     this.getMaxScore = function(){
-        if(score > maxScore){
-            maxScore = score;
+        if(this.score > this.maxScore){
+            this.maxScore = this.score;
         }
     }
 }

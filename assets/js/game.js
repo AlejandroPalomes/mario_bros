@@ -304,15 +304,15 @@ function Game() {
 
     };
 
-    this.update = function () {
+    // this.update = function () {
 
-        this.world.update();
+    //     this.world.update();
 
-    };
+    // };
 
-    this.restart = function(){
-        this.world.restart();
-    }
+    // this.restart = function(){
+    //     this.world.restart();
+    // }
 
 };
 
