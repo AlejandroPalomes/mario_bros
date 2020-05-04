@@ -52,6 +52,15 @@ var walkigGoomba = setInterval(function(){
 function keyDownUp(event) {
     controller.keyDownUp(event.type, event.keyCode);
 };
+function touchLeft() {
+    controller.keyDownUp("a", 37);
+};
+function touchUp() {
+    controller.keyDownUp("w", 38);
+};
+function touchRight() {
+    controller.keyDownUp("d", 39);
+};
 
 var restTime = setInterval(() => {
     time--;
@@ -95,6 +104,9 @@ var game = new Game();
 display();
 document.addEventListener("keydown", keyDownUp);
 document.addEventListener("keyup", keyDownUp);
+document.querySelector("#touchLeft").addEventListener("touchstart", touchLeft);
+document.querySelector("#touchUp").addEventListener("touchstart", touchUp);
+document.querySelector("#touchRight").addEventListener("touchstart", touchRight);
 document.querySelector(".start__button").addEventListener("click", checkUsername);
 document.querySelector("#restart").addEventListener("click", function(){
     game.restart()
@@ -103,7 +115,6 @@ document.querySelector("#restart").addEventListener("click", function(){
 document.querySelector("#start-submit").addEventListener("click", function(){
 
     event.preventDefault();
-
 
     document.querySelector(".login__container").classList.add("hidden");
     document.querySelector(".stats").classList.remove("hidden");
