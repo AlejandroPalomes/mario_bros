@@ -1,4 +1,7 @@
 function engine(){
     update();
-        var rest = setTimeout(engine, 30);
+    rest = setTimeout(engine, 30);
+    if(!alive){
+        clearTimeout(rest);
+    }
 }

@@ -266,7 +266,7 @@ function Game() {
 
             //screenX += worldSpeed;
 
-
+            console.log(worldSpeed);
             worldMove -= worldSpeed;
             document.querySelector("#main-container").style.left = worldMove + "px";
 
@@ -290,15 +290,56 @@ function Game() {
             document.querySelector(".gameOver").pause();
             document.querySelector("#main-container").style.left = 0;
             document.querySelector(".login__container").classList.remove("hidden");
+            mario.src = "assets/img/mario-stand-01.png";
+            mario.style.left = 0 + "px";
+            mario.style.bottom = 0 + "px";
+            mario.classList.remove("hidden");
+            mario.classList.remove("mario__dead");
             worldMove = 0;
+            worldSpeed = 3;
+            coinCount = 0;
+            // document.querySelector(".coinCounter").innerHTML = ('0' + coinCount).slice(-2);
+            score = 0;
+            document.querySelector("#score").innerHTML = ('00000' + score).slice(-6);
+            borderLeft = 0;
+            screenX = screenXInitial;
             speedX = 0;
             speedY = 0;
             posX = 0;
             posY = 0;
             jumping = false;
             falling = false;
-            posXe = 0;
-            posYe = 0;
+            time = 400;
+            document.querySelector("#time").innerHTML = time;
+
+            //restTime;
+
+
+            var index = 0;
+            goomba.forEach(function(element){
+                element.style.left = goombaPositions[index];
+                element.style.bottom = 0 + "px";
+                element.src = "assets/img/goomba1.png";
+                element.classList.add("alive");
+                element.classList.add("moveLeft");
+                element.classList.remove("hidden");
+                index++
+            })
+
+            index = 0;
+            floor.forEach(function(element){
+                element.style.left = floorPositions[index];
+                index++
+            })
+
+            index=0;
+            coins.forEach(function(element){
+                element.style.left = coinsPositionsX[index];
+                element.style.bottom = coinsPositionsY[index];
+                element.classList.remove("hidden");
+                index++
+            })
+
         
         }
 
@@ -332,7 +373,7 @@ this.pause = function (){
 }
 
 function dead() {
-    mario.src = "assets/img/mario-out.png"
+    mario.src = "assets/img/mario-out.png";
     alive = false;
     document.querySelector(".theme").pause();
     document.querySelector(".dead").currentTime = 0.3;
@@ -341,7 +382,6 @@ function dead() {
         mario.classList.add("mario__dead");
     },750);
     mario.addEventListener("animationend", function(){
-        console.log("animationend in mario")
         mario.classList.add("hidden");
         document.querySelector(".gameOver").currentTime = 0;
         document.querySelector(".gameOver").play();
@@ -350,13 +390,14 @@ function dead() {
         document.querySelector("#floor").classList.add("dispel");
     });
     document.querySelector(".stats").addEventListener("transitionend", function(){
-        console.log("animationend in stats")
         document.querySelector(".stats").classList.add("hidden");
         document.querySelector("#screen").classList.add("hidden");
         document.querySelector("#floor").classList.add("hidden");
         document.querySelector("#gameoverScreen").classList.remove("hidden");
         // document.querySelector("#gameoverScreen").classList.add("appear");
     });
+
+    clearTimeout(restTime);
 
 }
 
@@ -365,7 +406,10 @@ function win(){
         maxScore = score;
         topScore = ('00000' + score).slice(-6);
     }
-    mario.classList.add("marioWin")
+    mario.classList.add("marioWin");
+    users.forEach(function(element){
+        element.push(currentUser);
+    })
 }
 
 Game.prototype = {

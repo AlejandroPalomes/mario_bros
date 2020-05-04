@@ -9,18 +9,19 @@ var posX = 0;
 var posY = 0;
 var jumping = false;
 var falling = false;
-var posXe = 0;
-var posYe = 0;
-var eTop = 0;
-// var posXe2 = parseInt(getComputedStyle(goomba2).left);
-// var posYe2 = parseInt(getComputedStyle(goomba2).bottom);
-var eTop2 = 0;
+// var posXe = 0;
+// var posYe = 0;
 var coinCount = 0;
 var score = 0;
 var currentUser = undefined;
 var users = [];
+var usersName = [];
 var time = 400;
 var floor = document.querySelectorAll(".floor__section");
+var goombaPositions = [];
+var floorPositions = [];
+var coinsPositionsX = [];
+var coinsPositionsY = [];
 
 var pause = false;
 
@@ -31,12 +32,11 @@ var worldSpeed = 3;
 
 var alive = true;
 
-
 var solidBlocks = document.querySelectorAll(".collider");
 var coins = document.querySelectorAll(".coin");
 var tubes = document.querySelectorAll(".tube");
 
-var walkigGoomba = setInterval(function(){
+var walkingGoomba = setInterval(function(){
     goomba.forEach(function(element){
         if (element.classList.contains("alive") && element.classList.contains("walk")){
             element.src = "assets/img/goomba1.png";
@@ -48,6 +48,33 @@ var walkigGoomba = setInterval(function(){
     })
     
 }, 300);
+
+users.forEach(function(element){
+    usersName.push(element.name);
+})
+
+goomba.forEach(function(element){
+    goombaPositions.push(element.style.left);
+})
+
+floor.forEach(function(element){
+    floorPositions.push(element.style.left);
+})
+
+coins.forEach(function(element){
+    coinsPositionsX.push(element.style.left);
+})
+
+coins.forEach(function(element){
+    coinsPositionsY.push(element.style.bottom);
+})
+
+
+
+/////////////////
+//// CONTROLS ///
+/////////////////
+
 
 function keyDownUp(event) {
     controller.keyDownUp(event.type, event.keyCode);
@@ -62,7 +89,6 @@ function touchRight() {
     controller.keyDownUp("keydown", 39);
 };
 function touchLeftOut() {
-    console.log("touchLeft Works")
     controller.keyDownUp("keyup", 37);
 };
 function touchUpOut() {
@@ -102,15 +128,12 @@ function update() {
 /////////////////
 
 var controller = new Controller();
-//var display = new Display(document.querySelector("canvas"));
 var game = new Game();
-// var engine = new Engine(1000 / 30, update);
-
-// engine();
 
 ////////////////////
 //// INITIALIZE ////
 ////////////////////0
+// engine();
 display();
 document.addEventListener("keydown", keyDownUp);
 document.addEventListener("keyup", keyDownUp);
@@ -121,6 +144,7 @@ document.querySelector("#touchLeft").addEventListener("touchend", touchLeftOut);
 document.querySelector("#touchUp").addEventListener("touchend", touchUpOut);
 document.querySelector("#touchRight").addEventListener("touchend", touchRightOut);
 document.querySelector(".start__button").addEventListener("click", checkUsername);
+
 document.querySelector("#restart").addEventListener("click", function(){
     game.world.restart()
 });
@@ -133,12 +157,13 @@ document.querySelector("#start-submit").addEventListener("click", function(){
     document.querySelector(".stats").classList.remove("hidden");
     document.querySelector("#screen").classList.remove("hidden");
     document.querySelector("#floor").classList.remove("hidden");
+    if (!alive){
+        alive = true;
+    }
     engine();
 })
-// window.addEventListener("touchstart", function(){
-//     document.querySelector("body").style.backgroundColor = "red";
-//     jump()
-// })
+
+
 window.addEventListener("resize", display)
 // document.querySelector(".theme").play();
 document.querySelector(".theme").loop = true;
@@ -164,27 +189,23 @@ function jump() {
         document.querySelector(".sounds").play();
     }
 }
-var tet = undefined;
+
+
 function checkUsername(){
     event.preventDefault();
-    var userValue = document.querySelector("#player").value;
+    var inputValue = document.querySelector("#player").value;
     var regexp = new RegExp('^[a-zA-Z]+$');
 
-    if(userValue.match(regexp)){
-        // if (currentUser === undefined){
-            console.log(User.name);
-            if (users){
-                currentUser = new User(userValue);
-                document.querySelector("#start-submit").click();
-                console.log(tet)
-                tet = currentUser;
-                console.log(currentUser)
-                console.log(User.currentUser)
-                console.log("New User")
-                console.log(User[name])
-        } else{
+    if(inputValue.match(regexp)){
+        if (usersName.includes(inputValue)){
             console.log("User registered!")
-            currentUser = User(userValue)
+            document.querySelector("#start-submit").click();
+        } else{
+            currentUser = new User(inputValue);
+            console.log("New User!")
+            users.push(currentUser);
+            usersName.push(currentUser.name);
+            document.querySelector("#start-submit").click();
         }
     }else{}
  
