@@ -298,6 +298,15 @@ function checkTime() {
     }
 }
 
+this.pause = function (){
+    if (!pause){
+        pause = true;
+    }else{
+        pause = false;
+        engine();
+    }
+}
+
 function dead() {
     mario.src = "assets/img/mario-out.png"
     alive = false;
@@ -307,6 +316,31 @@ function dead() {
     var deadAnimation = setTimeout(function(){
         mario.classList.add("mario__dead");
     },750);
+    mario.addEventListener("animationend", function(){
+        console.log("animationend in mario")
+        mario.classList.add("hidden");
+        document.querySelector(".gameOver").play();
+        document.querySelector(".stats").classList.add("dispel");
+        document.querySelector("#screen").classList.add("dispel");
+        document.querySelector("#floor").classList.add("dispel");
+    });
+    document.querySelector(".stats").addEventListener("transitionend", function(){
+        console.log("animationend in stats")
+        document.querySelector(".stats").classList.add("hidden");
+        document.querySelector("#screen").classList.add("hidden");
+        document.querySelector("#floor").classList.add("hidden");
+        document.querySelector("#gameoverScreen").classList.remove("hidden");
+        document.querySelector("#gameoverScreen").classList.add("appear");
+    });
+
+}
+
+function win(){
+    if (score > maxScore){
+        maxScore = score;
+        topScore = ('00000' + score).slice(-6);
+    }
+    mario.classList.add("marioWin")
 }
 
 Game.prototype = {

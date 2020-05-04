@@ -10,6 +10,10 @@
 </head>
 <body class="d-flex">
     <div class="d-flex resize">
+        <div id="gameoverScreen" class="hidden d-flex">
+            <span>game over</span>
+            <button id="restart">try again</button>
+        </div>
         <div class="d-flex login__container">
             <div id="login" class="">
                 <div class="d-flex plate">
@@ -20,11 +24,11 @@
                 </div>
                 <form class="d-flex">
                     <label for="player">Enter Player Name</label>
-                    <input type="text" name="player" placeholder="enter name" id="player">
+                    <input type="text" name="player" placeholder="enter name" id="player" maxlength="3">
                     <button class="start__button">Start</button>
                     <input type="submit" class="hidden" value="Start" id="start-submit">
                 </form>
-                <span class="top__score">top- <span>000000</span></span>
+                <span class="top__score">top - <span id="topScore">000000</span></span>
             </div>
         </div>
         <!-- <canvas></canvas> -->
@@ -192,6 +196,7 @@
                 <audio class="coinSound" src="assets/sound/coin.wav"></audio>
                 <audio class="theme" src="assets/sound/theme.mp3"></audio>
                 <audio class="dead" src="assets/sound/dead.mp4"></audio>
+                <audio class="gameOver" src="assets/sound/game-over.mp3"></audio>
             </div>
         </div>
         <div id="floor" class="hidden">
@@ -202,6 +207,7 @@
         </div>
         <script src="assets/js/display.js"></script>
         <script src="assets/js/controller.js"></script>
+        <script src="assets/js/user.js"></script>
         <script src="assets/js/game.js"></script>
         <script src="assets/js/engine.js"></script>
         <script src="assets/js/main.js"></script>

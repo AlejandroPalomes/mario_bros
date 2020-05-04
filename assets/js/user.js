@@ -3,7 +3,7 @@ function User(name){
     this.score = 0;
     this.maxScore = 0;
 
-    getMaxScore(){
+    this.getMaxScore = function(){
         if(score > maxScore){
             maxScore = score;
         }

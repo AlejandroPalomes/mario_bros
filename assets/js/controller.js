@@ -20,12 +20,13 @@ function Controller() {
                 this.left.getInput(downKeyDownUp);
                 // console.log("working on A");
                 break;
-                case 38:    //"up arrow"
-                case 87:    //W
+            case 38:    //"up arrow"
+            case 87:    //W
+            case 32:    //W
                 this.up.getInput(downKeyDownUp);
                 break;
-                case 39:    //"right-arrow"
-                case 68:    //D
+            case 39:    //"right-arrow"
+            case 68:    //D
                 this.right.getInput(downKeyDownUp);
         }
     };

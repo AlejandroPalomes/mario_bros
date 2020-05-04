@@ -1,6 +1,6 @@
 var mario = document.querySelector(".mario");
 var goomba = document.querySelectorAll(".goomba");
-// var goomba2 = document.querySelector(".goomba2");
+var topScore = document.querySelector("#topScore").innerHTML;
 var screen = document.querySelector("#main-container");
 var screenX = parseInt(getComputedStyle(screen).width);
 var speedX = 0;
@@ -17,9 +17,12 @@ var eTop = 0;
 var eTop2 = 0;
 var coinCount = 0;
 var score = 0;
-var currentUser;
+var currentUser = undefined;
+var users = [];
 var time = 400;
 var floor = document.querySelectorAll(".floor__section");
+
+var pause = false;
 
 var windowSize = window.innerWidth;
 var resizeContainer = document.querySelector(".resize");
@@ -92,14 +95,13 @@ var game = new Game();
 display();
 document.addEventListener("keydown", keyDownUp);
 document.addEventListener("keyup", keyDownUp);
-document.querySelector(".start__button").addEventListener("click", function(){
-    event.preventDefault();
-    console.log("working button")
-    document.querySelector("#start-submit").click();
-});
+document.querySelector(".start__button").addEventListener("click", checkUsername);
+
 document.querySelector("#start-submit").addEventListener("click", function(){
-    console.log("working submit")
+
     event.preventDefault();
+
+
     document.querySelector(".login__container").classList.add("hidden");
     document.querySelector(".stats").classList.remove("hidden");
     document.querySelector("#screen").classList.remove("hidden");
@@ -134,5 +136,29 @@ function jump() {
         document.querySelector(".sounds").volume = 0.3;
         document.querySelector(".sounds").play();
     }
+}
+var tet = undefined;
+function checkUsername(){
+    event.preventDefault();
+    var userValue = document.querySelector("#player").value;
+    var regexp = new RegExp('^[a-zA-Z]+$');
 
+    if(userValue.match(regexp)){
+        // if (currentUser === undefined){
+            console.log(User.name);
+            if (users){
+                currentUser = new User(userValue);
+                document.querySelector("#start-submit").click();
+                console.log(tet)
+                tet = currentUser;
+                console.log(currentUser)
+                console.log(User.currentUser)
+                console.log("New User")
+                console.log(User[name])
+        } else{
+            console.log("User registered!")
+            currentUser = User(userValue)
+        }
+    }else{}
+ 
 }
