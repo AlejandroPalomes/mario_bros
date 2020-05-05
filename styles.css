@@ -375,21 +375,61 @@ input{
 }
 
 .touchBtn{
-    /* border: 2px solid white; */
-    border-radius: 3px;
+    border: 2px solid white;
+    border-radius: 8px;
     background: rgba(0,0,0,0);
     height: 300px;
+    outline: none;
+}
+
+.touchBtn:active{
+    background: rgba(255, 255, 255, 0.3);
 }
 
 #touchUp{
     width: 345px;
-    background: red;
+    position: relative;
 }
+#touchUp::after{
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 45%;
+    right: 140px;
+    border-left: 4px solid white;
+    border-top: 4px solid white;
+    transform: rotate(45deg);
+    }
+
 #touchLeft{
     width: 120px;
-    background: blue;
+    position: relative;
 }
+#touchLeft::after{
+content: "";
+position: absolute;
+width: 40px;
+height: 40px;
+bottom: 45%;
+right: 25px;
+border-left: 4px solid white;
+border-top: 4px solid white;
+transform: rotate(-45deg);
+}
+
 #touchRight{
     width: 120px;
-    background: yellow;
+    position: relative;
 }
+#touchRight::after{
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 45%;
+    left: 25px;
+    border-right: 4px solid white;
+    border-bottom: 4px solid white;
+    transform: rotate(-45deg);
+    }
