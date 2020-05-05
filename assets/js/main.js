@@ -152,6 +152,7 @@ document.querySelector("#touchLeft").addEventListener("touchend", touchLeftOut);
 document.querySelector("#touchUp").addEventListener("touchend", touchUpOut);
 document.querySelector("#touchRight").addEventListener("touchend", touchRightOut);
 document.querySelector(".start__button").addEventListener("click", checkUsername);
+document.querySelector(".difficulty__button").addEventListener("click", checkDifficulty);
 
 document.querySelector("#restart").addEventListener("click", function(){
     game.world.restart()
@@ -217,14 +218,32 @@ function checkUsername(){
     if(inputValue.match(regexp)){
         if (usersName.includes(inputValue)){
             console.log("User registered!")
-            document.querySelector("#start-submit").click();
+            // document.querySelector("#start-submit").click();
         } else{
             currentUser = new User(inputValue);
             console.log("New User!")
             users.push(currentUser);
             usersName.push(currentUser.name);
-            document.querySelector("#start-submit").click();
+            // document.querySelector("#start-submit").click();
         }
+        document.querySelector("#labelDescription").innerHTML = "choose difficulty";
+        document.querySelector("#player").classList.add("hidden");
+        document.querySelector(".start__button").classList.add("hidden");
+        document.querySelector("#difficulty").classList.remove("hidden");
+        document.querySelector(".difficulty__button").classList.remove("hidden");
     }else{}
- 
+}
+
+function checkDifficulty(){
+    event.preventDefault();
+    var inputValue = document.querySelector("#difficulty").value;
+    var regexp = new RegExp('^[1-3]$');
+    console.log(typeof inputValue)
+
+    if(inputValue.match(regexp)){
+    // if(inputValue == 1 || inputValue == 2 || inputValue == 3){
+            worldSpeed *= parseInt(inputValue);
+            document.querySelector("#start-submit").click();
+
+    }else{}
 }

@@ -43,8 +43,7 @@ function Game() {
                     falling = false;
                 }
 
-                // if(posX+mario.width > 8255){
-                if(posX+mario.width > 3000){
+                if(posX+mario.width > 8255){
                     win();
                 }
             }
@@ -71,7 +70,7 @@ function Game() {
                         speedY = 80;
                         element.src = "assets/img/goomba3.png"
                         document.querySelector(".kill").play();
-                        score += 100;
+                        score += 100 * document.querySelector("#difficulty").value;
                         document.querySelector("#score").innerHTML = ('00000' + score).slice(-6);
                         element.classList.remove("alive");
                         var removeEnemy = setTimeout(function () {
@@ -308,7 +307,12 @@ function Game() {
             document.querySelector(".stats").removeEventListener("transitionend", removeLose);
             mario.removeEventListener("animationend", marioWinMove);
             mario.removeEventListener("animationend", marioLoseMove);
-            document.querySelector("#player").value = ""
+            document.querySelector("#player").value = "";
+            document.querySelector("#player").classList.remove("hidden");
+            document.querySelector(".start__button").classList.remove("hidden");
+            document.querySelector("#difficulty").value = "";
+            document.querySelector("#difficulty").classList.add("hidden");
+            document.querySelector(".difficulty__button").classList.add("hidden");
             mario.src = "assets/img/mario-stand-01.png";
             mario.style.left = 0 + "px";
             mario.style.bottom = 0 + "px";

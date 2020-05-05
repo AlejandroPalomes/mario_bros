@@ -75,7 +75,7 @@ input{
     color: white;
 }
 
-#player, .difficuly__input{
+#player, .difficulty__input{
     width: 200px;
     height: 35px;
     background: rgba(0,0,0,0);
@@ -140,6 +140,10 @@ input{
     border: 2px solid white;
     color: white;
     outline: none;
+}
+
+.start__button:hover, .difficulty__button:hover{
+    background: rgba(255, 255, 255, 0.4);
 }
 
 .top__score{
