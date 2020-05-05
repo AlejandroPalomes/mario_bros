@@ -15,7 +15,6 @@ function display(){
             document.querySelector("#touchControls").classList.add("hidden");
             //document.querySelector("#main-container").style.transform = ""
         }
-        console.log(deviceAgent)
     }else {
         resizeContainer.style.transform = "scale(1)";
     }
