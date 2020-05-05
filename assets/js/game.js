@@ -43,7 +43,8 @@ function Game() {
                     falling = false;
                 }
 
-                if(posX+mario.width > 8255){
+                // if(posX+mario.width > 8255){
+                if(posX+mario.width > 3000){
                     win();
                 }
             }
@@ -432,12 +433,12 @@ function win(){
         topUser.innerHTML = currentUser.name;
     }
     if(winners.includes(currentUser.name)){
-        //saveScore(currentMax);
+        saveScore(currentMax);
     }else{
         winners.push(currentUser.name);
         addToScores(currentMax);
     }
-    // document.querySelector()
+
     alive = false;
     document.querySelector(".theme").pause();
     document.querySelector(".win").currentTime = 0;
@@ -488,31 +489,43 @@ function addToScores(currentMaxx) {
     liUsername.innerText = currentUser.name + " - " + currentMaxx;
     liUsername.setAttribute("id", currentUser.name);
     usersScores.appendChild(liUsername);
-    //saveScore(currentMaxx);
+    saveScore(currentMaxx);
 }
 
-// function saveScore(currentMaxx) {
-//     var userLi = document.querySelector(`#${currentUser.name}`);
-//     console.log(document.querySelector(`#${username}`));
-//     if (currentUserScore.innerHTML == "Currently playing") {
-//         users.forEach(element => {
-//             if (element.name == username) {
-//                 if (element.maxScore < clicks) {
-//                     element.maxScore = clicks;
-//                 }
-//                 for (let i = 1; i < users.length; i++) {
-//                     userLi = document.querySelector(`#${username}`);
-//                     currentUserScore = document.querySelector(`#${username}Score`);
-//                     if (currentUser.previousSibling.innerHTML < element.maxScore) {
-//                         document.querySelector(".users__scores").insertBefore(currentUserScore, userLi.previousSibling.previousSibling);
-//                         document.querySelector(".users__scores").insertBefore(userLi, currentUserScore);
-//                     };
-//                 }
-//                 currentUserScore.innerHTML = element.maxScore;
-//             }
-//         })
-//     }
-// }
+function saveScore(currentMaxx) {
+
+    //with this function we compare the maxScores of the users, reordering the array
+    users.sort(compare);
+
+    function compare(a, b) {
+
+        const scoreA = a.maxScore;
+        const scoreB = b.maxScore;
+
+        let comparison = 0;
+        if (scoreA < scoreB) {
+            comparison = 1;
+        } else if (scoreA > scoreB) {
+            comparison = -1;
+        }
+        return comparison;
+    }
+
+    //clear top Users
+    var liElements = document.getElementsByClassName("liElement");
+    var ulMain = document.getElementById("topUsers");
+    for(var i = 0; i < users.length; i++){
+        ulMain.removeChild(ulMain.lastChild)
+    }
+
+    //add new Top Users
+    for(var i = 0; i < users.length; i++){
+        var liUsername = document.createElement("li");
+        liUsername.innerText = users[i].name + " - " + users[i].maxScore;
+        ulMain.appendChild(liUsername);
+    }
+
+}
 
 Game.prototype = {
     constructor: Game

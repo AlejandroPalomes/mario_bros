@@ -75,7 +75,7 @@ input{
     color: white;
 }
 
-#player{
+#player, .difficuly__input{
     width: 200px;
     height: 35px;
     background: rgba(0,0,0,0);
@@ -132,7 +132,7 @@ input{
     text-shadow: 2px 5px black;
 }
 
-.start__button{
+.start__button, .difficulty__button{
     height: 30px;
     width: 200px;
     background: rgba(0,0,0,0);
