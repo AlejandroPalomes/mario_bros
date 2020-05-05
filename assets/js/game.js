@@ -102,8 +102,16 @@ function Game() {
                     if (!onTop) {
                         posY = posYB - mario.height;
                         speedY = 0;
-                        if (element.classList.contains("question")) {
+                        if (element.classList.contains("question") && !falling && !element.classList.contains("empty")) {
                             element.src = "assets/img/question2.png"
+                            var rand = Math.random();
+                            if(rand > 0.5 && rand < 0.7){
+                                score += 200;
+                            }else {
+                                score += 50;
+                            }
+                            document.querySelector("#score").innerHTML = ('00000' + score).slice(-6);
+                            element.classList.add("empty");
                         }
                     }
                 }
@@ -286,6 +294,7 @@ function Game() {
         },
 
         restart: function(){
+            //Reset all parameters, remove positions, remove listeners.. etc
             document.querySelector(".stats").classList.remove("dispel");
             document.querySelector("#screen").classList.remove("dispel");
             document.querySelector("#floor").classList.remove("dispel");
@@ -294,11 +303,17 @@ function Game() {
             document.querySelector(".gameOver").pause();
             document.querySelector("#main-container").style.left = 0;
             document.querySelector(".login__container").classList.remove("hidden");
+            document.querySelector("#screen").removeEventListener("transitionend", removeWin);
+            document.querySelector(".stats").removeEventListener("transitionend", removeLose);
+            mario.removeEventListener("animationend", marioWinMove);
+            mario.removeEventListener("animationend", marioLoseMove);
+            document.querySelector("#player").value = ""
             mario.src = "assets/img/mario-stand-01.png";
             mario.style.left = 0 + "px";
             mario.style.bottom = 0 + "px";
             mario.classList.remove("hidden");
             mario.classList.remove("mario__dead");
+            mario.classList.remove("mario__win");
             worldMove = 0;
             worldSpeed = 3;
             coinCount = 0;
@@ -346,7 +361,8 @@ function Game() {
             
             solidBlocks.forEach(function(element){
                 if (element.classList.contains("question")) {
-                    element.src = "assets/img/question.gif"
+                    element.src = "assets/img/question.gif";
+                    element.classList.remove("empty");
                 }
             })
 
@@ -354,16 +370,6 @@ function Game() {
         }
 
     };
-
-    // this.update = function () {
-
-    //     this.world.update();
-
-    // };
-
-    // this.restart = function(){
-    //     this.world.restart();
-    // }
 
 };
 
@@ -391,29 +397,34 @@ function dead() {
     var deadAnimation = setTimeout(function(){
         mario.classList.add("mario__dead");
     },750);
-    mario.addEventListener("animationend", function(){
-        mario.classList.add("hidden");
-        document.querySelector(".gameOver").currentTime = 0;
-        document.querySelector(".gameOver").play();
-        document.querySelector(".stats").classList.add("dispel");
-        document.querySelector("#screen").classList.add("dispel");
-        document.querySelector("#floor").classList.add("dispel");
-    });
-    document.querySelector(".stats").addEventListener("transitionend", function(){
-        document.querySelector(".stats").classList.add("hidden");
-        document.querySelector("#screen").classList.add("hidden");
-        document.querySelector("#floor").classList.add("hidden");
-        document.querySelector("#gameoverScreen").classList.remove("hidden");
-        // document.querySelector("#gameoverScreen").classList.add("appear");
-    });
+    mario.addEventListener("animationend", marioLoseMove);
+    document.querySelector(".stats").addEventListener("transitionend", removeLose);
+    // document.querySelector("#winScreen").classList.add("hidden");
+
 
     clearTimeout(restTime);
 
 }
 
+function marioLoseMove(){
+    mario.classList.add("hidden");
+    document.querySelector(".gameOver").currentTime = 0;
+    document.querySelector(".gameOver").play();
+    document.querySelector(".stats").classList.add("dispel");
+    document.querySelector("#screen").classList.add("dispel");
+    document.querySelector("#floor").classList.add("dispel");
+}
+
+function removeLose(){
+    document.querySelector(".stats").classList.add("hidden");
+    document.querySelector("#screen").classList.add("hidden");
+    document.querySelector("#floor").classList.add("hidden");
+    document.querySelector("#gameoverScreen").classList.remove("hidden");
+}
+
 function win(){
     clearTimeout(restTime)
-    currentUser.score = score;
+    currentUser.score = obtainResult();
     var currentMax = currentUser.getMaxScore();
     if (currentMax > maxScore){
         maxScore = currentMax;
@@ -436,13 +447,7 @@ function win(){
         mario.src = "assets/img/mario-stand-02.png";
     });
 
-    mario.addEventListener("animationend", function(){
-        mario.style.bottom = -8 +"px";
-        mario.style.left = 8500 +"px";
-        document.querySelector(".stats").classList.add("dispel");
-        document.querySelector("#screen").classList.add("dispel");
-        document.querySelector("#floor").classList.add("dispel");
-    });
+    mario.addEventListener("animationend", marioWinMove);
 
     var rCoins = document.querySelector("#currentCoins");
     var rTime = document.querySelector("#currentTime");
@@ -454,18 +459,26 @@ function win(){
     rScore.innerHTML = score;
     rResult.innerHTML = obtainResult();
 
-    document.querySelector(".stats").addEventListener("transitionend", function(){
-        document.querySelector(".stats").classList.add("hidden");
-        document.querySelector("#screen").classList.add("hidden");
-        document.querySelector("#floor").classList.add("hidden");
-        document.querySelector("#winScreen").classList.remove("hidden");
-        // document.querySelector("#gameoverScreen").classList.add("appear");
-    });
-    
+    document.querySelector("#screen").addEventListener("transitionend", removeWin);
+}
+
+function marioWinMove(){
+    mario.style.bottom = -8 +"px";
+    mario.style.left = 8500 +"px";
+    document.querySelector(".stats").classList.add("dispel");
+    document.querySelector("#screen").classList.add("dispel");
+    document.querySelector("#floor").classList.add("dispel");
+}
+
+function removeWin(){
+    document.querySelector(".stats").classList.add("hidden");
+    document.querySelector("#screen").classList.add("hidden");
+    document.querySelector("#floor").classList.add("hidden");
+    document.querySelector("#winScreen").classList.remove("hidden");
 }
 
 function obtainResult(){
-    return coinCount + time + score;
+    return coinCount*4 + time + score;
 }
 
 
