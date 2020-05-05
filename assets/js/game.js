@@ -518,9 +518,12 @@ function saveScore(currentMaxx) {
     //clear top Users
     var liElements = document.getElementsByClassName("liElement");
     var ulMain = document.getElementById("topUsers");
-    for(var i = 0; i < users.length; i++){
+    // if (liElements.length > 0){
+        for(var i = 0; i < users.length; i++){
+        console.log("working for " + [i])
         ulMain.removeChild(ulMain.lastChild)
-    }
+        }
+    // }
 
     //add new Top Users
     for(var i = 0; i < users.length; i++){
